@@ -1,0 +1,45 @@
+# deploy.yml — GitHub Actions workflow for building and deploying to GitHub Pages.
+# Triggers on every push to main. Builds the Vite app and pushes dist/ to gh-pages branch.
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+# Allow the workflow to write to the repo (needed to push to gh-pages)
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out the source code
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Set up Node.js (matches local development version)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Build the Vite app (tsc -b && vite build)
+      - name: Build
+        run: npm run build
+
+      # 5. Deploy dist/ to the gh-pages branch
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          cname: raymondsotto.dev
