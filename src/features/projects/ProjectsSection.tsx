@@ -29,9 +29,10 @@ export default function ProjectsSection() {
     <section className="sec" id="projects">
       <p className="sec-label reveal">Projects</p>
 
-      {/* Section heading */}
+      {/* Section heading — active line swaps based on tab */}
       <h2 className={`${styles.head} reveal`}>
-        Work I've built.<br /><span>Things I'm still building.</span>
+        <span className={`${styles.line1} ${activeTab === 'professional' ? styles.lineActive : styles.lineDim}`}>Work I've built.</span><br />
+        <span className={`${styles.line2} ${activeTab === 'personal' ? styles.lineActive : styles.lineDim}`}>Things I'm still building.</span>
       </h2>
 
       {/* Tab switcher — Professional / Personal */}
@@ -67,10 +68,10 @@ export default function ProjectsSection() {
 /* ── Featured project card with browser mockup ── */
 function FeaturedCard({ project }: { project: Project }) {
   return (
-    <div className={`${styles.feat} reveal`}>
+    <div className={styles.feat}>
       <div className={styles.featInner}>
-        {/* Browser mockup illustration */}
-        <BrowserMockup url={project.mockupUrl ?? 'localhost'} isWip={project.status === 'wip'} />
+        {/* Browser mockup — shows screenshot if available, else renders skeleton */}
+        <BrowserMockup url={project.mockupUrl ?? 'localhost'} isWip={project.status === 'wip'} imageUrl={project.imageUrl} />
 
         {/* Project info body */}
         <div className={styles.pbody}>
@@ -106,7 +107,7 @@ function FeaturedCard({ project }: { project: Project }) {
 /* ── Compact project card ── */
 function CompactCard({ project, delay }: { project: Project; delay: number }) {
   return (
-    <div className={`${styles.pcard} reveal ${delay > 0 ? `d${delay}` : ''}`}>
+    <div className={styles.pcard} style={{ animationDelay: `${delay * 0.08}s` }}>
       <div className={styles.pcardTop}>
         {/* Card icon — generic layout icon */}
         <div className={styles.pcardIcon}>
@@ -180,7 +181,7 @@ function ProjectLinks({ project }: { project: Project }) {
 }
 
 /* ── Browser mockup illustration ── */
-function BrowserMockup({ url, isWip }: { url: string; isWip: boolean }) {
+function BrowserMockup({ url, isWip, imageUrl }: { url: string; isWip: boolean; imageUrl?: string }) {
   return (
     <div className={styles.mockup}>
       <div className={styles.browser}>
@@ -192,18 +193,26 @@ function BrowserMockup({ url, isWip }: { url: string; isWip: boolean }) {
           <div className={styles.burl}>{url}</div>
         </div>
 
-        {/* Skeleton content to simulate a page */}
-        <div className={styles.bbody}>
-          <div className={styles.ur} style={{ width: '40%' }} />
-          <div className={styles.ur} style={{ width: '65%' }} />
-          <div className={styles.ur} style={{ width: isWip ? '38%' : '85%' }} />
-          {!isWip && <div className={styles.ur} style={{ width: '50%' }} />}
-          <div className={styles.ucards} style={isWip ? { gridTemplateColumns: '1fr 1fr', marginTop: '12px' } : undefined}>
-            <div className={styles.ucard} style={isWip ? { height: '48px' } : undefined} />
-            <div className={styles.ucard} style={isWip ? { height: '48px' } : undefined} />
-            {!isWip && <div className={styles.ucard} />}
+        {/* Screenshot if available; otherwise render skeleton placeholder */}
+        {imageUrl ? (
+          <img
+            src={imageUrl}
+            alt={url}
+            style={{ width: '100%', display: 'block', objectFit: 'cover' }}
+          />
+        ) : (
+          <div className={styles.bbody}>
+            <div className={styles.ur} style={{ width: '40%' }} />
+            <div className={styles.ur} style={{ width: '65%' }} />
+            <div className={styles.ur} style={{ width: isWip ? '38%' : '85%' }} />
+            {!isWip && <div className={styles.ur} style={{ width: '50%' }} />}
+            <div className={styles.ucards} style={isWip ? { gridTemplateColumns: '1fr 1fr', marginTop: '12px' } : undefined}>
+              <div className={styles.ucard} style={isWip ? { height: '48px' } : undefined} />
+              <div className={styles.ucard} style={isWip ? { height: '48px' } : undefined} />
+              {!isWip && <div className={styles.ucard} />}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   )
