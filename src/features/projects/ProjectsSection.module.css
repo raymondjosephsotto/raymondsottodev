@@ -4,7 +4,7 @@
  * and the Professional/Personal tab switcher.
  */
 
-/* Section heading — large with muted span */
+/* Section heading — large display */
 .head {
   font-size: clamp(26px, 4.5vw, 50px);
   font-weight: 800;
@@ -13,7 +13,20 @@
   color: var(--heading);
   margin-bottom: clamp(28px, 4.5vw, 48px);
 }
-.head span {
+
+/* Shared transition on both heading lines */
+.line1,
+.line2 {
+  transition: color 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Active line — bright heading color */
+.lineActive {
+  color: var(--heading);
+}
+
+/* Dim line — muted color */
+.lineDim {
   color: var(--t3);
 }
 
@@ -56,6 +69,12 @@
   display: block;
 }
 
+/* ── Card mount animation ── */
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
 /* ── Featured project card — full-width with mockup ── */
 .feat {
   border: 1px solid var(--border);
@@ -64,6 +83,7 @@
   background: var(--bg2);
   margin-bottom: 12px;
   transition: border-color 0.3s;
+  animation: cardIn 0.45s var(--ease) both;
 }
 .feat:hover {
   border-color: var(--sand-b);
@@ -292,6 +312,27 @@
   }
 }
 
+/* Screenshot preview inside compact card */
+.pcardImg {
+  width: calc(100% + 40px);
+  margin: -20px -20px 0;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  aspect-ratio: 16 / 7;
+  border-bottom: 1px solid var(--border);
+}
+.pcardImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: transform 0.4s var(--ease);
+}
+.pcard:hover .pcardImg img {
+  transform: scale(1.03);
+}
+
 /* Compact card */
 .pcard {
   background: var(--bg2);
@@ -302,6 +343,7 @@
   flex-direction: column;
   gap: 9px;
   transition: border-color 0.25s, background 0.25s;
+  animation: cardIn 0.4s var(--ease) both;
 }
 .pcard:hover {
   border-color: var(--sand-b);

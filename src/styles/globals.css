@@ -151,11 +151,13 @@ ul {
   }
 }
 
-/* Scroll-reveal base state — components add .in class via IntersectionObserver */
+/* Scroll-reveal — visible by default; JS marks off-screen elements with data-pending */
 .reveal {
+  transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+}
+.reveal[data-pending] {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
 }
 .reveal.in {
   opacity: 1;

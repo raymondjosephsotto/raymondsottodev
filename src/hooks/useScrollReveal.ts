@@ -4,22 +4,15 @@
  * Unobserves after triggering so the animation only plays once.
  */
 
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 
-/**
- * Observe all .reveal elements in the DOM and add .in when visible.
- * Call this once in the top-level page component (Home.tsx).
- */
 export function useScrollReveal(): void {
-  useEffect(() => {
-    /* Create observer that triggers at 7% visibility */
+  useLayoutEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            /* Add .in class to trigger the CSS transition */
             entry.target.classList.add('in')
-            /* Stop watching — animation should only fire once */
             observer.unobserve(entry.target)
           }
         })
@@ -27,10 +20,19 @@ export function useScrollReveal(): void {
       { threshold: 0.07 }
     )
 
-    /* Observe all elements marked with the .reveal class */
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
+    document.querySelectorAll('.reveal').forEach((el) => {
+      const rect = el.getBoundingClientRect()
+      const inView = rect.top < window.innerHeight && rect.bottom > 0
+      if (inView) {
+        /* Already visible — show immediately, no animation needed */
+        el.classList.add('in')
+      } else {
+        /* Off-screen — hide it and let the observer reveal it on scroll */
+        el.setAttribute('data-pending', '')
+        observer.observe(el)
+      }
+    })
 
-    /* Cleanup: disconnect observer when component unmounts */
     return () => observer.disconnect()
   }, [])
 }

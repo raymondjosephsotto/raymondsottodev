@@ -75,5 +75,6 @@ export interface Project {
   siteUrl?: string
   repoUrl?: string
   mockupUrl?: string
+  imageUrl?: string     /* optional screenshot shown in the featured card browser mockup */
   detailContent?: string
 }
