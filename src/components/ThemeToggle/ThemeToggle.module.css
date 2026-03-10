@@ -1,0 +1,46 @@
+/**
+ * ThemeToggle.module.css — Styles for the fixed theme toggle button.
+ * Positioned bottom-right, circular, with hover animation.
+ */
+
+/* Fixed position toggle button — always accessible */
+.toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 300;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--t2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.22s var(--ease);
+}
+
+/* Hover: accent color + slight scale */
+.toggle:hover {
+  color: var(--sand);
+  border-color: var(--sand-b);
+  transform: scale(1.1);
+}
+
+/* Sun icon hidden in light mode */
+:global([data-theme="light"]) .iconSun {
+  display: none;
+}
+
+/* Moon icon hidden in dark mode (default) */
+.iconMoon {
+  display: none;
+}
+
+/* Moon icon shown in light mode */
+:global([data-theme="light"]) .iconMoon {
+  display: flex;
+}

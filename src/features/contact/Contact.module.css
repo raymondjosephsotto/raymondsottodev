@@ -1,0 +1,104 @@
+/**
+ * Contact.module.css — Contact / CTA section styles.
+ * Centered layout with ambient glow, large heading, and action buttons.
+ */
+
+/* Contact section — centered dark band with padding */
+.contact {
+  background: var(--bg2);
+  padding: clamp(80px, 13vh, 140px) var(--px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--border2);
+}
+
+/* Ambient radial glow — centered bottom */
+.contact::before {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60vw;
+  height: 60vw;
+  max-width: 680px;
+  max-height: 680px;
+  background: radial-gradient(ellipse, rgba(200, 185, 154, 0.048), transparent 65%);
+  pointer-events: none;
+}
+:global([data-theme="light"]) .contact::before {
+  background: radial-gradient(ellipse, rgba(193, 95, 60, 0.06), transparent 65%);
+}
+
+/* Small label above heading */
+.pre {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sand);
+  opacity: 0.72;
+  margin-bottom: 16px;
+}
+
+/* Large CTA heading */
+.head {
+  font-size: clamp(36px, 8vw, 88px);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  color: var(--heading);
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+.head span {
+  color: var(--t3);
+  display: block;
+}
+
+/* Subtitle text */
+.sub {
+  font-size: clamp(13px, 1.38vw, 15px);
+  font-weight: 300;
+  color: var(--t2);
+  max-width: 360px;
+  margin: 0 auto 36px;
+  line-height: 1.88;
+  position: relative;
+  z-index: 1;
+}
+
+/* Action buttons row */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 28px;
+}
+
+/* Social icons row */
+.social {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.social a {
+  color: var(--t3);
+  display: flex;
+  transition: color 0.2s;
+}
+.social a:hover {
+  color: var(--sand);
+}
+.social svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}

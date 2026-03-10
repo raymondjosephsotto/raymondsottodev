@@ -1,13 +1,52 @@
-import React from 'react';
-import { Container } from "@mui/material";
+/**
+ * Home.tsx — Main landing page that composes all portfolio sections.
+ * This is the "/" route. Each section is a self-contained feature component.
+ * Initializes the scroll-reveal IntersectionObserver on mount.
+ */
 
-const Home: React.FC = () => {
-    return (
-        <Container maxWidth="md">
-            <h1>Home</h1>
-            <p>Welcome to my portfolio.</p>
-        </Container>
-    );
-};
+import { useScrollReveal } from '../hooks/useScrollReveal'
+import Hero from '../features/hero/Hero'
+import NavBar from '../components/NavBar/NavBar'
+import About from '../features/about/About'
+import Stats from '../features/about/Stats'
+import ProjectsSection from '../features/projects/ProjectsSection'
+import SkillsSection from '../features/skills/SkillsSection'
+import Workflow from '../features/workflow/Workflow'
+import Contact from '../features/contact/Contact'
+import Footer from '../components/Footer/Footer'
 
-export default Home;
+export default function Home() {
+  /* Activate IntersectionObserver for all .reveal elements on this page */
+  useScrollReveal()
+
+  return (
+    <>
+      {/* Hero section — name, role, tagline, social links */}
+      <Hero />
+
+      {/* Sticky navigation bar — sits below hero */}
+      <NavBar />
+
+      {/* About section — three value pillars */}
+      <About />
+
+      {/* Stats badges — career metrics */}
+      <Stats />
+
+      {/* Projects section — tabbed professional/personal cards */}
+      <ProjectsSection />
+
+      {/* Skills section — list/grid toggle */}
+      <SkillsSection />
+
+      {/* Workflow section — sprint-to-deploy timeline */}
+      <Workflow />
+
+      {/* Contact CTA — email, résumé, social */}
+      <Contact />
+
+      {/* Footer — attribution + year */}
+      <Footer />
+    </>
+  )
+}

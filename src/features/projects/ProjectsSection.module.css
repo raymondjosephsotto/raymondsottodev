@@ -1,0 +1,369 @@
+/**
+ * ProjectsSection.module.css — Projects section layout, tabs, and card styles.
+ * Includes featured project cards (with browser mockup), compact project cards,
+ * and the Professional/Personal tab switcher.
+ */
+
+/* Section heading — large with muted span */
+.head {
+  font-size: clamp(26px, 4.5vw, 50px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: var(--heading);
+  margin-bottom: clamp(28px, 4.5vw, 48px);
+}
+.head span {
+  color: var(--t3);
+}
+
+/* ── Tab switcher ── */
+.tabs {
+  display: flex;
+  gap: 2px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 4px;
+  width: fit-content;
+  margin-bottom: clamp(24px, 4vw, 40px);
+}
+
+.tab {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--t2);
+  background: transparent;
+  border: none;
+  padding: 7px 20px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* Active tab gets elevated background */
+.tabActive {
+  background: var(--bg4);
+  color: var(--text);
+}
+
+/* Tab panels — hidden by default */
+.panel {
+  display: none;
+}
+.panelShow {
+  display: block;
+}
+
+/* ── Featured project card — full-width with mockup ── */
+.feat {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg2);
+  margin-bottom: 12px;
+  transition: border-color 0.3s;
+}
+.feat:hover {
+  border-color: var(--sand-b);
+}
+
+/* Desktop: two-column layout with mockup on left */
+@media (min-width: 900px) {
+  .featInner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 320px;
+  }
+}
+
+/* ── Browser mockup area ── */
+.mockup {
+  background: var(--bg3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  aspect-ratio: 4 / 3;
+  position: relative;
+  overflow: hidden;
+}
+@media (min-width: 900px) {
+  .mockup {
+    aspect-ratio: auto;
+    border-right: 1px solid var(--border);
+  }
+}
+
+/* Ambient glow under the browser mockup */
+.mockup::before {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(ellipse, rgba(200, 185, 154, 0.07), transparent 70%);
+  pointer-events: none;
+}
+:global([data-theme="light"]) .mockup::before {
+  background: radial-gradient(ellipse, rgba(193, 95, 60, 0.08), transparent 70%);
+}
+
+/* Browser chrome frame */
+.browser {
+  width: 100%;
+  max-width: 340px;
+  background: #0d0d0d;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  overflow: hidden;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.5);
+}
+
+/* Browser title bar with traffic lights */
+.bbar {
+  background: #181818;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Traffic light dots */
+.bdots {
+  display: flex;
+  gap: 5px;
+}
+.bdots span:nth-child(1) { width: 6px; height: 6px; border-radius: 50%; background: #ff5f56; display: block; }
+.bdots span:nth-child(2) { width: 6px; height: 6px; border-radius: 50%; background: #ffbd2e; display: block; }
+.bdots span:nth-child(3) { width: 6px; height: 6px; border-radius: 50%; background: #27c93f; display: block; }
+
+/* URL bar placeholder */
+.burl {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 3px;
+  height: 16px;
+  font-size: 9px;
+  color: var(--t3);
+  display: flex;
+  align-items: center;
+  padding: 0 7px;
+}
+
+/* Browser body — the fake "page content" */
+.bbody {
+  padding: 14px;
+  background: linear-gradient(150deg, #111, #090909);
+  min-height: 90px;
+}
+
+/* Skeleton content lines in browser body */
+.ur {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  margin-bottom: 7px;
+}
+
+/* Three faux-content cards in the mockup */
+.ucards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-top: 10px;
+}
+.ucard {
+  background: rgba(200, 185, 154, 0.06);
+  border: 1px solid rgba(200, 185, 154, 0.08);
+  border-radius: 4px;
+  height: 36px;
+}
+
+/* Light mode: terracotta tint for mockup cards */
+:global([data-theme="light"]) .ucard {
+  background: rgba(193, 95, 60, 0.06);
+  border-color: rgba(193, 95, 60, 0.10);
+}
+
+/* ── Project body (text side of featured card) ── */
+.pbody {
+  padding: clamp(20px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 11px;
+}
+
+/* Status + links row */
+.statusRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Status indicator with colored dot */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--t3);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/* Status dot — live (green) or wip (amber) */
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.dotLive {
+  background: #7db87d;
+  box-shadow: 0 0 0 3px rgba(125, 184, 125, 0.15);
+}
+.dotWip {
+  background: #d4a96a;
+  box-shadow: 0 0 0 3px rgba(212, 169, 106, 0.15);
+}
+
+/* External link icons row */
+.plinks {
+  display: flex;
+  gap: 12px;
+}
+.plinks a {
+  color: var(--t3);
+  display: flex;
+  transition: color 0.2s;
+}
+.plinks a:hover {
+  color: var(--sand);
+}
+.plinks svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Project name — heading */
+.pname {
+  font-size: clamp(17px, 2.2vw, 22px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--heading);
+  line-height: 1.1;
+  transition: color 0.25s;
+}
+.feat:hover .pname {
+  color: var(--sand);
+}
+
+/* Project description */
+.pdesc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--t2);
+  line-height: 1.8;
+}
+
+/* Tags row */
+.ptags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+/* ── Compact project card list ── */
+.plist {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+@media (min-width: 700px) {
+  .plist {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Compact card */
+.pcard {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  transition: border-color 0.25s, background 0.25s;
+}
+.pcard:hover {
+  border-color: var(--sand-b);
+  background: var(--bg3);
+}
+
+/* Card header — icon + status */
+.pcardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Card icon */
+.pcardIcon {
+  color: var(--t3);
+  display: flex;
+  transition: color 0.2s;
+}
+.pcardIcon svg {
+  width: 16px;
+  height: 16px;
+}
+.pcard:hover .pcardIcon {
+  color: var(--sand);
+}
+
+/* Card name */
+.pcardName {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--heading);
+  margin-bottom: 3px;
+  transition: color 0.2s;
+}
+.pcard:hover .pcardName {
+  color: var(--sand);
+}
+
+/* Card description */
+.pcardDesc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--t2);
+  line-height: 1.75;
+  flex: 1;
+}
+
+/* "See more details" link for future project detail pages */
+.detailLink {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--sand);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.detailLink:hover {
+  opacity: 1;
+}

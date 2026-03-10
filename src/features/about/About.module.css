@@ -1,0 +1,24 @@
+/**
+ * About.module.css — About section styles.
+ * Contains body text with strong-tag emphasis and relaxed line-height.
+ */
+
+/* Body text — limited width for comfortable reading */
+.body {
+  font-size: clamp(13px, 1.38vw, 15px);
+  font-weight: 300;
+  color: var(--t2);
+  line-height: 1.92;
+  max-width: 660px;
+}
+
+/* Paragraph spacing */
+.body p + p {
+  margin-top: 16px;
+}
+
+/* Bold keywords — stand out as heading color */
+.body strong {
+  color: var(--heading);
+  font-weight: 600;
+}

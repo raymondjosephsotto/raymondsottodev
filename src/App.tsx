@@ -1,25 +1,31 @@
-import { Routes, Route } from "react-router-dom";
-import NavBar from "./components/NavBar";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Projects from "./pages/Projects";
-import Contact from "./pages/Contact";
+/**
+ * App.tsx — Root application component.
+ * Sets up React Router with routes for the home page,
+ * individual project detail pages, and a 404 fallback.
+ */
 
-function App() {
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import ProjectDetail from './pages/ProjectDetail'
+import NotFound from './pages/NotFound'
+import ThemeToggle from './components/ThemeToggle/ThemeToggle'
+
+export default function App() {
   return (
-    <div>
-      <NavBar />
-      {/* Add spacing so content doesn't hide behind the sticky NavBar */}
-      <main style={{ paddingTop: 80 }}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </main>
-    </div>
-  );
-}
+    <>
+      {/* Theme toggle — fixed bottom-right, visible on all pages */}
+      <ThemeToggle />
 
-export default App;
+      <Routes>
+        {/* Home page — all sections composed together */}
+        <Route path="/" element={<Home />} />
+
+      {/* Project detail page — dynamic slug from data layer */}
+      <Route path="/projects/:slug" element={<ProjectDetail />} />
+
+      {/* 404 catch-all */}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+    </>
+  )
+}
