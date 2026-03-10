@@ -1,0 +1,267 @@
+/**
+ * globals.css — Design tokens, CSS reset, and base styles.
+ * All theming is driven by CSS custom properties on :root / [data-theme="light"].
+ * Components consume these tokens — one toggle repaints the entire site.
+ */
+
+/* ============================================================
+   GOOGLE FONTS — Inter
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ============================================================
+   CSS RESET — normalize box model and spacing
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Minimal scrollbar */
+::-webkit-scrollbar {
+  width: 2px;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+}
+
+/* ============================================================
+   DESIGN TOKENS — Dark theme (default)
+   ============================================================ */
+:root {
+  /* Background shades */
+  --bg: #141414;
+  --bg2: #191919;
+  --bg3: #1f1f1f;
+  --bg4: #252525;
+
+  /* Accent — warm sand */
+  --sand: #c8b99a;
+  --sand-d: rgba(200, 185, 154, 0.12);
+  --sand-l: rgba(200, 185, 154, 0.06);
+  --sand-b: rgba(200, 185, 154, 0.20);
+
+  /* Borders */
+  --border: rgba(255, 255, 255, 0.07);
+  --border2: rgba(255, 255, 255, 0.04);
+
+  /* Text hierarchy */
+  --text: #e8e2da;
+  --t2: rgba(232, 226, 218, 0.50);
+  --t3: rgba(232, 226, 218, 0.22);
+
+  /* Heading color — near-white for dark mode */
+  --heading: #f5f0ea;
+
+  /* Animation easing */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Responsive horizontal padding */
+  --px: 20px;
+
+  /* Responsive vertical section padding */
+  --spy: clamp(80px, 11vh, 128px);
+}
+
+/* Breakpoint: tablet */
+@media (min-width: 640px) {
+  :root { --px: 40px; }
+}
+/* Breakpoint: desktop */
+@media (min-width: 1024px) {
+  :root { --px: 72px; }
+}
+/* Breakpoint: wide */
+@media (min-width: 1280px) {
+  :root { --px: 112px; }
+}
+
+/* ============================================================
+   LIGHT THEME TOKENS — overrides on data-theme="light"
+   ============================================================ */
+[data-theme="light"] {
+  --bg: #f4f3ee;
+  --bg2: #ffffff;
+  --bg3: #ece9e3;
+  --bg4: #e2ddd6;
+
+  /* Accent shifts to terracotta */
+  --sand: #c15f3c;
+  --sand-d: rgba(193, 95, 60, 0.09);
+  --sand-l: rgba(193, 95, 60, 0.07);
+  --sand-b: rgba(193, 95, 60, 0.22);
+
+  --border: rgba(0, 0, 0, 0.08);
+  --border2: rgba(0, 0, 0, 0.05);
+
+  --text: #1a1917;
+  --t2: #726d67;              /* 4.63:1 on #f4f3ee — WCAG AA */
+  --t3: rgba(26, 25, 23, 0.52);
+
+  /* Headings flip to near-black */
+  --heading: #111110;
+}
+
+/* Light-mode base overrides */
+[data-theme="light"] body {
+  background: var(--bg);
+  color: var(--text);
+}
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: #d4cfc7;
+}
+
+/* ============================================================
+   ANIMATION KEYFRAMES — shared across all components
+   ============================================================ */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Scroll-reveal base state — components add .in class via IntersectionObserver */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Staggered delay classes for grouped reveals */
+.d1 { transition-delay: 0.08s; }
+.d2 { transition-delay: 0.16s; }
+.d3 { transition-delay: 0.24s; }
+.d4 { transition-delay: 0.32s; }
+
+/* ============================================================
+   SECTION BASE — shared padding and divider
+   ============================================================ */
+.sec {
+  padding: var(--spy) var(--px);
+  border-top: 1px solid var(--border2);
+}
+
+/* Section label — small uppercase accent text */
+.sec-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sand);
+  opacity: 0.72;
+  margin-bottom: clamp(28px, 4.5vw, 48px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sec-label::after {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--sand);
+  opacity: 0.28;
+}
+
+/* ============================================================
+   SHARED BUTTON STYLES
+   ============================================================ */
+
+/* Ghost button — outlined, subtle */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--t2);
+  border: 1px solid var(--border);
+  padding: 10px 22px;
+  border-radius: 100px;
+  transition: color 0.2s, border-color 0.2s, transform 0.25s var(--ease);
+}
+.btn-ghost:hover {
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: scale(1.02);
+}
+
+/* Light mode: ghost hover border needs darker color */
+[data-theme="light"] .btn-ghost:hover {
+  border-color: rgba(0, 0, 0, 0.18);
+}
+
+/* Filled button — accent background */
+.btn-fill {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #141414;
+  background: var(--sand);
+  border: none;
+  padding: 12px 26px;
+  border-radius: 100px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.2s, transform 0.25s var(--ease);
+  text-decoration: none;
+}
+.btn-fill:hover {
+  opacity: 0.88;
+  transform: scale(1.02);
+}
+
+/* Light mode: filled button text should be white on terracotta */
+[data-theme="light"] .btn-fill {
+  color: #ffffff;
+}
+
+/* ============================================================
+   TAG / PILL STYLES — used by projects and workflow
+   ============================================================ */
+.tag {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--sand);
+  background: var(--sand-l);
+  border: 1px solid var(--sand-b);
+  padding: 3px 10px;
+  border-radius: 100px;
+}

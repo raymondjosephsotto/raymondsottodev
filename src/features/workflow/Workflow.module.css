@@ -1,0 +1,160 @@
+/**
+ * Workflow.module.css — Workflow/process section styles.
+ * Vertical timeline on mobile, horizontal on desktop.
+ * Each step has a numbered node, connecting line, and tag pills.
+ */
+
+/* Section heading */
+.head {
+  font-size: clamp(24px, 4vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.06;
+  color: var(--heading);
+  margin-bottom: clamp(36px, 5.5vw, 60px);
+}
+.head span {
+  color: var(--t3);
+}
+
+/* Steps container — vertical on mobile */
+.steps {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Individual step — grid with node column + content column */
+.step {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 0 18px;
+  padding-bottom: 28px;
+}
+.step:last-child {
+  padding-bottom: 0;
+}
+
+/* Left column — node + connecting line */
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Numbered circle node */
+.node {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--sand);
+  flex-shrink: 0;
+  transition: background 0.25s, border-color 0.25s;
+}
+
+/* Hover: accent glow on node */
+.step:hover .node {
+  background: var(--sand-d);
+  border-color: var(--sand-b);
+}
+
+/* Connecting line between nodes */
+.line {
+  flex: 1;
+  width: 1px;
+  background: var(--border2);
+  margin-top: 4px;
+}
+
+/* Right column — step content */
+.right {
+  padding-top: 3px;
+}
+
+/* Step title */
+.title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--heading);
+  margin-bottom: 4px;
+  transition: color 0.2s;
+}
+.step:hover .title {
+  color: var(--sand);
+}
+
+/* Step description */
+.desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--t2);
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+
+/* Step tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+/* Workflow-specific tag — smaller than project tags */
+.tag {
+  font-size: 10px;
+  color: var(--sand);
+  background: var(--sand-l);
+  border: 1px solid var(--sand-b);
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+/* ── Desktop layout: horizontal timeline ── */
+@media (min-width: 1024px) {
+  .steps {
+    flex-direction: row;
+  }
+
+  .step {
+    flex: 1;
+    grid-template-columns: 1fr;
+    grid-template-rows: 34px 1fr;
+    padding-bottom: 0;
+    padding-right: 20px;
+  }
+  .step:last-child {
+    padding-right: 0;
+  }
+
+  /* Horizontal node + line layout */
+  .left {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  /* Connecting line becomes horizontal */
+  .line {
+    flex: 1;
+    height: 1px;
+    width: auto;
+    margin-top: 0;
+    margin-left: 4px;
+  }
+
+  /* Hide line on last step */
+  .step:last-child .line {
+    display: none;
+  }
+
+  .right {
+    padding-top: 0;
+  }
+}

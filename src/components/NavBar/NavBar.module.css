@@ -1,0 +1,71 @@
+/**
+ * NavBar.module.css — Sticky navigation bar styles.
+ * Sits between Hero and content sections with frosted glass backdrop.
+ * Active state uses accent pill background.
+ */
+
+/* Sticky wrapper with frosted glass effect */
+.wrap {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  padding: 12px var(--px);
+  background: rgba(20, 20, 20, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border2);
+  border-bottom: 1px solid var(--border2);
+}
+
+/* Light mode: adjust backdrop color */
+:global([data-theme="light"]) .wrap {
+  background: rgba(244, 243, 238, 0.92);
+}
+
+/* Horizontal scrollable nav container — hides scrollbar */
+.nav {
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  white-space: nowrap;
+}
+.nav::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual nav link — pill shape */
+.link {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--t2);
+  padding: 7px 16px;
+  border-radius: 100px;
+  white-space: nowrap;
+  transition: color 0.2s, background 0.2s;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-family: 'Inter', system-ui, sans-serif;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Hover state — subtle background */
+.link:hover {
+  color: var(--text);
+  background: var(--bg3);
+}
+
+/* Active state — accent pill with dark text */
+.active {
+  color: #141414;
+  background: var(--sand);
+}
+
+/* Light mode: active pill needs white text on terracotta */
+:global([data-theme="light"]) .active {
+  color: #ffffff;
+}

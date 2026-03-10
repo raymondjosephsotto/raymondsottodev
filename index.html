@@ -1,10 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portfolio</title>
+    <title>Raymond Sotto — Software Engineer</title>
+    <meta name="description" content="Raymond Sotto — Front-End Developer with 6 years of experience, growing into Full-Stack Software Engineering." />
+    <!-- SPA redirect: restore URL from 404.html query-string redirect -->
+    <script>
+      (function(){
+        var redir = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redir && redir !== location.href) {
+          history.replaceState(null, '', redir);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

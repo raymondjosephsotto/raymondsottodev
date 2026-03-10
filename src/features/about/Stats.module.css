@@ -1,0 +1,88 @@
+/**
+ * Stats.module.css — Statistics badge row styles.
+ * Grid of 2 columns on mobile, 4 columns on tablet+.
+ * Each stat card has a hover glow effect.
+ */
+
+/* Stats wrapper — darker background band */
+.stats {
+  background: var(--bg2);
+  border-top: 1px solid var(--border2);
+  padding: clamp(52px, 7vh, 88px) var(--px);
+}
+
+/* Grid with 1px gap lines acting as borders */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border2);
+}
+
+/* 4-column on tablet+ */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Individual stat card */
+.stat {
+  background: var(--bg2);
+  padding: clamp(20px, 3vw, 36px) clamp(14px, 2.5vw, 28px);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.25s;
+}
+
+/* Hover glow overlay — sand-tinted gradient */
+.stat::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--sand-l), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Hover: darken background + show glow */
+.stat:hover {
+  background: var(--bg3);
+}
+.stat:hover::before {
+  opacity: 1;
+}
+
+/* Large number display */
+.number {
+  font-size: clamp(32px, 5vw, 58px);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  color: var(--heading);
+  margin-bottom: 6px;
+}
+
+/* Superscript unit/suffix on stat numbers */
+.number sup {
+  font-size: 0.4em;
+  color: var(--sand);
+  font-weight: 600;
+  vertical-align: super;
+}
+
+/* Stat title — medium weight */
+.title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+/* Stat description — muted */
+.desc {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--t2);
+  line-height: 1.65;
+}
