@@ -10,7 +10,7 @@ import { useActiveSection } from '../../hooks/useActiveSection'
 import styles from './NavBar.module.css'
 
 /* Section IDs that the nav links point to */
-const sections = ['about', 'projects', 'skills', 'workflow', 'contact'] as const
+const sections = ['projects', 'about', 'skills', 'workflow', 'contact'] as const
 
 export default function NavBar() {
   const location = useLocation()
