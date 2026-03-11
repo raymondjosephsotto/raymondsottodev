@@ -196,7 +196,7 @@ function BrowserMockup({ url, isWip, imageUrl }: { url: string; isWip: boolean; 
         {/* Screenshot if available; otherwise render skeleton placeholder */}
         {imageUrl ? (
           <img
-            src={imageUrl}
+            src={`${import.meta.env.BASE_URL ?? '/'}${imageUrl}`}
             alt={url}
             style={{ width: '100%', display: 'block', objectFit: 'cover' }}
           />
