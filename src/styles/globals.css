@@ -178,6 +178,14 @@ ul {
   border-top: 1px solid var(--border2);
 }
 
+/* Projects section: tighter vertical padding on mobile */
+@media (max-width: 639px) {
+  #projects {
+    padding-top: 3.5rem;
+    scroll-margin-top: 2rem;
+  }
+}
+
 /* Section label — small uppercase accent text */
 .sec-label {
   font-size: 10px;

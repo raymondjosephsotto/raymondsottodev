@@ -53,19 +53,21 @@
   display: inline-block;
 }
 
-/* Hover state — subtle background */
-.link:hover {
-  color: var(--text);
-  background: var(--bg3);
+/* Hover state — only on devices with true hover (prevents sticky hover on mobile) */
+@media (hover: hover) {
+  .link:hover {
+    color: var(--text);
+    background: var(--bg3);
+  }
 }
 
-/* Active state — accent pill with dark text */
-.active {
+/* Active state — accent pill with dark text. Uses .link.active to win over .link:hover */
+.link.active {
   color: #141414;
   background: var(--sand);
 }
 
 /* Light mode: active pill needs white text on terracotta */
-:global([data-theme="light"]) .active {
+:global([data-theme="light"]) .link.active {
   color: #ffffff;
 }
