@@ -10,33 +10,33 @@ import styles from './Workflow.module.css'
 const steps = [
   {
     num: '01',
-    title: 'Sprint Planning',
-    desc: 'Break down designs into components, assess new vs. existing, and estimate effort before writing a line of code.',
+    title: 'Plan & Scope',
+    desc: 'Break down requirements into components, assess scope and effort, identify reuse opportunities, and write clear stories before writing a line of code.',
     tags: ['Jira', 'Agile', 'Scrum'],
   },
   {
     num: '02',
-    title: 'Component Markup',
-    desc: 'Build HTML structure using Nunjucks templating in a custom boilerplate. Semantic and accessible from the start.',
-    tags: ['Nunjucks', 'HTML5'],
+    title: 'Build & Structure',
+    desc: 'Write semantic, accessible markup using a component-based approach. Readable, maintainable, and ready for any rendering layer from day one.',
+    tags: ['HTML5', 'Nunjucks', 'Accessibility'],
   },
   {
     num: '03',
     title: 'Style & Script',
-    desc: 'Write structured SCSS and Vanilla JS, compiled to production-ready assets via Gulp.',
+    desc: 'Layer in modular SCSS and JavaScript, structured, compiled, and performance-conscious. Responsive and cross-browser compatible out of the box.',
     tags: ['SCSS', 'JavaScript', 'Gulp'],
   },
   {
     num: '04',
-    title: 'PR & Review',
-    desc: 'Push to a task branch, open a Pull Request, and merge after peer review. Clean history, traceable changes.',
-    tags: ['Git', 'GitHub'],
+    title: 'Review & Test',
+    desc: 'Open a PR, get peer feedback, and test across browsers and devices. Clean commit history, traceable changes, and no surprises at merge.',
+    tags: ['Git', 'GitHub', 'Cross-browser'],
   },
   {
     num: '05',
-    title: 'Back-End Handoff',
-    desc: 'BED converts compiled markup to C# Razor views wired into Sitecore MVC templates and placeholders.',
-    tags: ['C#', 'Sitecore', 'MVC'],
+    title: 'Ship & Integrate',
+    desc: 'Validate on staging, integrate with back-end APIs or CMS rendering layers, and deploy to production. I understand enough of the full stack to own what I build, end to end.',
+    tags: ['CI/CD', 'REST API', 'CMS'],
   },
 ]
 

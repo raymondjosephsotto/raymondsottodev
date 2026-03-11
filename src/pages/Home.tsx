@@ -27,14 +27,14 @@ export default function Home() {
       {/* Sticky navigation bar — sits below hero */}
       <NavBar />
 
+      {/* Projects section — tabbed professional/personal cards */}
+      <ProjectsSection />
+
       {/* About section — three value pillars */}
       <About />
 
       {/* Stats badges — career metrics */}
       <Stats />
-
-      {/* Projects section — tabbed professional/personal cards */}
-      <ProjectsSection />
 
       {/* Skills section — list/grid toggle */}
       <SkillsSection />
