@@ -5,6 +5,7 @@
  */
 
 import styles from './Contact.module.css'
+import { Link } from 'react-router-dom'
 
 export default function Contact() {
   return (
@@ -34,15 +35,15 @@ export default function Contact() {
           raymondjosephsotto@gmail.com
         </a>
 
-        {/* Résumé download button — link to be updated */}
-        <a className="btn-ghost" href="#" target="_blank" rel="noopener noreferrer">
+        {/* Link to Résumé page */}
+        <Link to={`/resume/`} className="btn-ghost">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
             <polyline points="7 10 12 15 17 10" />
             <line x1="12" y1="15" x2="12" y2="3" />
           </svg>
           Résumé
-        </a>
+        </Link>
       </div>
 
       {/* Social icons — GitHub + LinkedIn */}

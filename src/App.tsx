@@ -7,6 +7,7 @@
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import ProjectDetail from './pages/ProjectDetail'
+import Resume from './pages/Resume'
 import NotFound from './pages/NotFound'
 import ThemeToggle from './components/ThemeToggle/ThemeToggle'
 
@@ -20,12 +21,15 @@ export default function App() {
         {/* Home page — all sections composed together */}
         <Route path="/" element={<Home />} />
 
-      {/* Project detail page — dynamic slug from data layer */}
-      <Route path="/projects/:slug" element={<ProjectDetail />} />
+        {/* Project detail page — dynamic slug from data layer */}
+        <Route path="/projects/:slug" element={<ProjectDetail />} />
 
-      {/* 404 catch-all */}
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+        {/* Résumé page */}
+        <Route path="/resume" element={<Resume />} />
+
+        {/* 404 catch-all */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   )
 }
