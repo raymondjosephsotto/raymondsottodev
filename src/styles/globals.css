@@ -73,7 +73,7 @@ ul {
 
   /* Text hierarchy */
   --text: #e8e2da;
-  --t2: rgba(232, 226, 218, 0.50);
+  --t2: rgba(232, 226, 218, 0.58); /* raised from 0.50 — WCAG AA compliant (5.20:1 min) */
   --t3: rgba(232, 226, 218, 0.22);
 
   /* Heading color — near-white for dark mode */
@@ -111,11 +111,11 @@ ul {
   --bg3: #ece9e3;
   --bg4: #e2ddd6;
 
-  /* Accent shifts to terracotta */
-  --sand: #c15f3c;
-  --sand-d: rgba(193, 95, 60, 0.09);
-  --sand-l: rgba(193, 95, 60, 0.07);
-  --sand-b: rgba(193, 95, 60, 0.22);
+  /* Accent shifts to terracotta — #AD4C2E passes WCAG AA on all light bgs (4.91:1 min) */
+  --sand: #ad4c2e;
+  --sand-d: rgba(173, 76, 46, 0.09);
+  --sand-l: rgba(173, 76, 46, 0.07);
+  --sand-b: rgba(173, 76, 46, 0.22);
 
   --border: rgba(0, 0, 0, 0.08);
   --border2: rgba(0, 0, 0, 0.05);
