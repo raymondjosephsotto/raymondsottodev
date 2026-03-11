@@ -21,11 +21,11 @@
   }
 }
 
-/* Footer text — small, muted */
+/* Footer text — small, muted (--t2 used here, not --t3, for WCAG AA compliance) */
 .footer p {
   font-size: 11px;
   font-weight: 400;
-  color: var(--t3);
+  color: var(--t2);
 }
 
 /* Footer links — accent color */
