@@ -12,6 +12,10 @@ export default function About() {
       {/* Section label with decorative line */}
       <p className="sec-label reveal">About</p>
 
+      <h2 className={`${styles.head} reveal`}>
+        The mindset behind the code:<br /><span>Code with intention. Build it right. Always deliver.</span>
+      </h2>
+
       <div className={styles.grid}>
 
         {/* Left column: three mantra paragraphs */}

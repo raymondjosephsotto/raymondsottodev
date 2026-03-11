@@ -10,7 +10,6 @@ import NavBar from '../components/NavBar/NavBar'
 import About from '../features/about/About'
 import Stats from '../features/about/Stats'
 import ProjectsSection from '../features/projects/ProjectsSection'
-import SkillsSection from '../features/skills/SkillsSection'
 import Workflow from '../features/workflow/Workflow'
 import Contact from '../features/contact/Contact'
 import Footer from '../components/Footer/Footer'
@@ -35,9 +34,6 @@ export default function Home() {
 
       {/* Stats badges — career metrics */}
       <Stats />
-
-      {/* Skills section — list/grid toggle */}
-      <SkillsSection />
 
       {/* Workflow section — sprint-to-deploy timeline */}
       <Workflow />
