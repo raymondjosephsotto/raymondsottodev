@@ -4,6 +4,33 @@
  * Desktop (1024px+): two-column grid, mantra left / journey right.
  */
 
+/* Section heading */
+.head {
+  font-size: clamp(24px, 4vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.06;
+  color: var(--heading);
+  margin-bottom: clamp(36px, 5.5vw, 60px);
+}
+
+.head span {
+  color: var(--t3);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
+
+@media (min-width: 640px) {
+  .head span {
+    font-size: clamp(20px, 3vw, 36px);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.06;
+  }
+}
+
 /* Two-column grid wrapper */
 .grid {
   display: grid;

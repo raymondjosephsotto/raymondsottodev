@@ -10,17 +10,17 @@ export default function Contact() {
   return (
     <section className={styles.contact} id="contact">
       {/* Small label */}
-      <p className={`${styles.pre} reveal`}>Let's work together</p>
+      <p className={`${styles.pre} reveal`}>Get in touch</p>
 
       {/* Large CTA heading */}
       <h2 className={`${styles.head} reveal`}>
-        Let's build<span>something real.</span>
+        It starts with<span>a conversation.</span>
       </h2>
 
       {/* Subtitle */}
       <p className={`${styles.sub} reveal`}>
-        Looking for engineering roles where I can grow across the full stack.
-        Open to full-time positions and honest technical conversations.
+        If something stood out, the next step is easy.<br />
+        Send me an email or connect on LinkedIn.
       </p>
 
       {/* Action buttons — email + résumé */}

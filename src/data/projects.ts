@@ -18,7 +18,7 @@ export const projects: Project[] = [
     layout: 'featured',
     description:
       "Front-end development for Penn Foster's student-facing platform. Built reusable UI components, maintained the design system, improved Core Web Vitals, and contributed SEO enhancements across a Sitecore CMS environment.",
-    skills: ['javascript', 'scss', 'nunjucks', 'gulp', 'sitecore', 'csharp'],
+    skills: ['javascript', 'scss', 'nunjucks', 'npm', 'sitecore', 'csharp'],
     siteUrl: 'https://pennfoster.edu',
     imageUrl: '/images/pennfoster.png',
     mockupUrl: 'https://www.pennfoster.edu/',

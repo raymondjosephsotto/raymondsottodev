@@ -1,51 +1,48 @@
 /**
  * skills.ts — All skill data for the portfolio.
- * Adding a new skill is just adding an entry here.
- * The `category` field determines visual treatment (daily/familiar/learning).
+ * Three tiers ordered by depth: Stack / Tools / Libraries.
+ * Adding a new skill is just adding an entry here — no component changes needed.
  */
 
 import type { Skill } from './types'
 
-/* Master list of all skills, grouped by category for display */
+/* Master list of all skills, ordered by tier then depth */
 export const skills: Skill[] = [
-  /* ── Daily drivers — tools used every sprint ── */
-  { id: 'javascript', label: 'JavaScript (ES6+)', category: 'daily' },
-  { id: 'scss', label: 'SASS / SCSS', category: 'daily' },
-  { id: 'html', label: 'HTML5 & CSS3', category: 'daily' },
-  { id: 'npm', label: 'NPM & Gulp', category: 'daily' },
-  { id: 'git', label: 'Git / GitHub', category: 'daily' },
-  { id: 'jira', label: 'Jira', category: 'daily' },
+  /* ── Stack — core languages and technologies ── */
+  { id: 'javascript', label: 'JavaScript (ES6+)',    category: 'stack' },
+  { id: 'typescript', label: 'TypeScript',           category: 'stack' },
+  { id: 'react',      label: 'React.js',             category: 'stack' },
+  { id: 'nodejs',     label: 'Node.js',              category: 'stack' },
+  { id: 'express',    label: 'Express.js',           category: 'stack' },
+  { id: 'mongodb',    label: 'MongoDB',              category: 'stack' },
+  { id: 'rest-api',   label: 'REST API',             category: 'stack' },
+  { id: 'csharp',     label: 'C#',                   category: 'stack' },
+  { id: 'html',       label: 'HTML5 & CSS3',         category: 'stack' },
+  { id: 'scss',       label: 'SCSS / SASS',          category: 'stack' },
+  { id: 'git',        label: 'Git / Version Control', category: 'stack' },
 
-  /* ── Familiar — real experience, not daily use ── */
-  { id: 'react', label: 'React.js / Redux', category: 'familiar' },
-  { id: 'nodejs', label: 'Node.js / ExpressJS / MongoDB', category: 'familiar' },
-  { id: 'rest-api', label: 'REST API / Firebase', category: 'familiar' },
-  { id: 'webpack', label: 'Webpack / GSAP / jQuery / Bootstrap', category: 'familiar' },
-  { id: 'styled-components', label: 'styled-components / MaterialUI', category: 'familiar' },
-  { id: 'figma', label: 'Figma / Adobe XD / InVision', category: 'familiar' },
-  { id: 'wordpress', label: 'WordPress / Shopify / SquareSpace', category: 'familiar' },
-  { id: 'gitlab', label: 'GitLab / BitBucket / Asana / Trello', category: 'familiar' },
+  /* ── Tools — build tools, platforms, and workflow ── */
+  { id: 'tanstack-query', label: 'TanStack Query', category: 'tools' },
+  { id: 'redux',          label: 'Redux',          category: 'tools' },
+  { id: 'gsap',           label: 'GSAP',           category: 'tools' },
+  { id: 'vite',           label: 'Vite',           category: 'tools' },
+  { id: 'webpack',        label: 'Webpack',        category: 'tools' },
+  { id: 'npm',            label: 'NPM / Gulp',     category: 'tools' },
+  { id: 'nunjucks',       label: 'Nunjucks',       category: 'tools' },
+  { id: 'wordpress',      label: 'WordPress',      category: 'tools' },
+  { id: 'sitecore',       label: 'Sitecore',       category: 'tools' },
+  { id: 'figma',          label: 'Figma',          category: 'tools' },
+  { id: 'jira',           label: 'Jira',           category: 'tools' },
 
-  /* ── Currently learning — actively studying ── */
-  { id: 'typescript', label: 'TypeScript', category: 'learning' },
-  { id: 'csharp', label: 'C#', category: 'learning' },
-  { id: 'sitecore', label: 'Sitecore CMS', category: 'learning' },
+  /* ── Libraries — use-case specific, situational ── */
+  { id: 'bootstrap',        label: 'Bootstrap',        category: 'libraries' },
+  { id: 'styled-components', label: 'styled-components', category: 'libraries' },
+  { id: 'materialui',       label: 'Material UI',      category: 'libraries' },
+  { id: 'tailwind',         label: 'Tailwind',         category: 'libraries' },
+  { id: 'vitest',           label: 'Vitest',           category: 'libraries' },
+  { id: 'adobe-xd',         label: 'Adobe XD',         category: 'libraries' },
+  { id: 'invision',         label: 'InVision',         category: 'libraries' },
 ]
-
-/* Grid-view pills use a flatter mapping for the pill display */
-export const skillPillsByCategory = {
-  daily: [
-    'JavaScript ES6+', 'SASS / SCSS', 'HTML5', 'CSS3',
-    'NPM', 'Gulp', 'Git / GitHub', 'Jira',
-  ],
-  familiar: [
-    'React.js', 'Redux', 'Node.js', 'ExpressJS', 'MongoDB',
-    'REST API', 'Firebase', 'Webpack', 'GSAP', 'jQuery', 'Bootstrap',
-    'styled-components', 'MaterialUI', 'Figma', 'Adobe XD', 'InVision',
-    'WordPress', 'Shopify', 'GitLab', 'BitBucket', 'Asana', 'Trello',
-  ],
-  learning: ['TypeScript', 'C#', 'Sitecore'],
-}
 
 /* Helper: get skills filtered by category */
 export const getSkillsByCategory = (category: Skill['category']): Skill[] =>
