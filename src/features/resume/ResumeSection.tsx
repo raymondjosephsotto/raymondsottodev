@@ -70,7 +70,11 @@ const ResumeSection = () => {
                                     <div className={styles.experienceDate}>{exp.date}</div>
                                     <div className={styles.experienceCompany}>{exp.company}</div>
                                     <div className={styles.experienceDescription}>
-                                        {exp.description}
+                                        <ul>
+                                            {exp.description.map((item, index) => (
+                                                <li key={index}>{item}</li>
+                                            ))}
+                                        </ul>
                                     </div>
                                 </div>
                             ))}
