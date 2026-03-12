@@ -78,7 +78,7 @@ export interface Project {
 export interface ResumeExperience {
   date: string
   company: string
-  description: string
+  description: string[]
 }
 
 export interface ResumeEducation {
