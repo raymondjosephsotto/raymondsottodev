@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <mask id="r-logo-light">
+      <circle cx="256" cy="256" r="235" fill="white"/>
+      <text
+        x="261" y="378"
+        text-anchor="middle"
+        font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif"
+        font-size="352"
+        font-weight="800"
+        fill="black">r</text>
+    </mask>
+  </defs>
+  <circle cx="256" cy="256" r="235" fill="#C0604A" mask="url(#r-logo-light)"/>
+</svg>
