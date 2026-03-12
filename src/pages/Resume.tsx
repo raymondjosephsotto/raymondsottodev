@@ -4,9 +4,9 @@ import ResumeSection from "../features/resume/ResumeSection";
 
 const Resume = () => {
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <div className="page-shell">
             {/* Back link */}
-            <Link to="/" style={{ width: 'fit-content', margin: '24px var(--px) 0', color: 'var(--sand)', fontSize: '13px', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+            <Link to="/" className="btn-back">
                 ← Home
             </Link>
 

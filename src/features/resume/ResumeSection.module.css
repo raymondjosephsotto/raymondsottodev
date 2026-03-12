@@ -20,7 +20,7 @@
 .resume {
   width: 100%;
   position: relative;
-  padding: 3rem var(--px);
+  padding: 6rem var(--px) 3rem ;
   flex: 1;
 }
 

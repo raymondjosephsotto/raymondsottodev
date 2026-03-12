@@ -1,0 +1,108 @@
+/* ── Gallery wrapper ── */
+.gallery {
+  position: sticky;
+  top: 96px;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* ── Main swiper ── */
+.mainSwiper {
+  width: 100%;
+  min-width: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--bg3);
+}
+
+/* ── Custom nav controls — below thumbnail strip, flush right ── */
+.navControls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.navBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg3);
+  backdrop-filter: blur(6px);
+  color: var(--sand);
+  font-size: 15px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+  padding: 0;
+}
+.navBtn:hover {
+  background: var(--bg4);
+}
+.navBtn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.mainImage {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Thumbnail strip ── */
+.thumbsSwiper {
+  width: 100%;
+  min-width: 0;
+}
+
+.thumbSlide {
+  cursor: pointer;
+  border-radius: 6px;
+  overflow: hidden;
+  opacity: 0.45;
+  transition: opacity 0.2s;
+  border: 2px solid transparent;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+.thumbSlide:global(.swiper-slide-thumb-active) {
+  opacity: 1;
+  border-color: var(--sand, #c8a97a);
+}
+
+.thumbImage {
+  width: 100%;
+  height: 64px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Responsive: sticky carousel header on mobile ── */
+@media (max-width: 900px) {
+  .gallery {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg);
+    padding-top: 80px; /* clears the fixed ← Home button (24px top + ~30px height + buffer) */
+    padding-bottom: 16px;
+  }
+
+  .mainSwiper {
+    border-radius: 0;
+    margin-bottom: 8px;
+  }
+
+  .mainImage {
+    height: 220px;
+  }
+
+  .thumbImage {
+    height: 52px;
+  }
+}
