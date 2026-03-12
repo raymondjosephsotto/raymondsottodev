@@ -72,3 +72,30 @@ export interface Project {
   imageUrl?: string     /* optional screenshot shown in the featured card browser mockup */
   detailContent?: string
 }
+
+/* ── Resume types ── */
+
+export interface ResumeExperience {
+  date: string
+  company: string
+  description: string
+}
+
+export interface ResumeEducation {
+  date: string
+  institution: string
+  degree: string
+}
+
+export interface ResumeData {
+  experience: ResumeExperience[]
+  education: ResumeEducation[]
+  skills: Record<string, string[]>
+}
+
+/* ── Link types ── */
+
+export interface SiteLink {
+  label: string
+  href: string
+}

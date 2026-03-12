@@ -1,0 +1,389 @@
+/*
+ * Resume Styles
+ */
+
+/* ============================================================
+   Container — collapsed/expanded toggle (mobile only)
+   ============================================================ */
+.resumeContainer {
+  display: none;
+}
+
+.resumeContainer.expanded {
+  display: block;
+  z-index: 1;
+}
+
+/* ============================================================
+   Resume root
+   ============================================================ */
+.resume {
+  width: 100%;
+  position: relative;
+  padding: 3rem var(--px);
+  flex: 1;
+}
+
+.resume a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+/* ============================================================
+   Animation — columns fade up on mount with staggered delay
+   ============================================================ */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   Layout — 3-column flex
+   Column proportions: col1 (identity) is intentionally narrow;
+   col2 (experience) and col3 (skills) share the remaining space.
+   ============================================================ */
+.resumePage {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+/* Identity column — wide enough for row CTAs + display name */
+.column1 {
+  flex: 0 0 240px;
+  min-width: 0;
+  animation: fadeSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.05s;
+}
+
+/* Experience + Education — largest share */
+.column2 {
+  flex: 1.1;
+  min-width: 0;
+  animation: fadeSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.12s;
+}
+
+/* Skills — slightly narrower than col2 */
+.column3 {
+  flex: 1;
+  min-width: 0;
+  animation: fadeSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.2s;
+}
+
+/* ============================================================
+   Sections
+   ============================================================ */
+.sectionWrapper {
+  margin-bottom: 2rem;
+}
+
+.sectionWrapper:last-child {
+  margin-bottom: 0;
+}
+
+.sectionHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  text-transform: uppercase;
+  margin-bottom: 0.625rem;
+}
+
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--t2);
+}
+
+.sectionNumber {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--t3);
+  letter-spacing: 0.06em;
+}
+
+.separator {
+  width: 100%;
+  border: none;
+  border-top: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+}
+
+/* ============================================================
+   Identity — name, role, image, CTAs
+   ============================================================ */
+.resumeName {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: var(--heading);
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+  text-align: center;
+}
+
+.resumeRole {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--t2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.resumeImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 50%;
+  margin-bottom: 1.25rem;
+}
+
+/* CTA links — icon row under photo */
+.resumeCta {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--t2);
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.ctaLink:hover {
+  color: var(--text);
+}
+
+.ctaLink svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.ctaLink:hover svg {
+  opacity: 1;
+}
+
+/* ============================================================
+   Experience
+   ============================================================ */
+.experienceList {
+  display: flex;
+  flex-direction: column;
+}
+
+.experienceItem {
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border2);
+}
+
+.experienceItem:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.experienceDate,
+.educationDate {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--t3);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+
+.experienceCompany {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--heading);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.experienceDescription {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--t2);
+}
+
+/* ============================================================
+   Education
+   ============================================================ */
+.educationList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.educationItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.educationInstitution {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--heading);
+  line-height: 1.3;
+}
+
+.educationDegree {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--t2);
+}
+
+/* ============================================================
+   Skills
+   ============================================================ */
+.skillsList {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.skillsColumn {
+  flex: 1;
+  min-width: 0;
+}
+
+.skillsItem {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.skillsItem:last-child {
+  margin-bottom: 0;
+}
+
+.skillsCategory {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.01em;
+}
+
+.skillsDetails {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skillsDetails li {
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--t2);
+}
+
+/* ============================================================
+   References (kept for future use)
+   ============================================================ */
+.referenceItem {
+  width: 100%;
+  display: block;
+}
+
+.referenceName {
+  font-weight: 500;
+}
+
+.referenceContact {
+  margin-bottom: 1rem;
+  color: var(--t2);
+}
+
+/* ============================================================
+   Responsive — tablet and up
+   ============================================================ */
+@media (min-width: 640px) {
+  .resumePage {
+    padding-left: 2rem;
+  }
+}
+
+/* ============================================================
+   Responsive — mobile: stack all columns
+   ============================================================ */
+@media (max-width: 639px) {
+  .resumeContainer {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.75s ease-in-out;
+  }
+
+  .resumeContainer.expanded {
+    max-height: 500vh;
+  }
+
+  .resume {
+    display: block;
+    margin: auto;
+  }
+
+  .resumePage {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .column1,
+  .column2,
+  .column3 {
+    flex: none;
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .column1 {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+   .column3 {
+    margin-top: 2rem;
+   }
+
+  .sectionTitle {
+    padding-top: 0.75rem;
+  }
+
+  .resumeImage {
+    max-width: 120px;
+    margin: 0.75rem auto 1.5rem;
+  }
+
+  .resumeCta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}

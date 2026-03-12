@@ -14,7 +14,7 @@ export type Theme = 'light' | 'dark'
  * Detect whether it's daytime based on user's local timezone.
  * Uses Intl API to get the local hour — 6am to 8pm is "day".
  */
-export function isDaytime(): boolean {
+export const isDaytime = (): boolean => {
   const tz = Intl.DateTimeFormat().resolvedOptions().timeZone
   const hour = Number(
     new Date().toLocaleString('en-US', { timeZone: tz, hour: 'numeric', hour12: false })
@@ -28,7 +28,7 @@ export function isDaytime(): boolean {
  * 2. System prefers-color-scheme media query
  * 3. Time-based fallback via Intl API
  */
-export function getInitialTheme(): Theme {
+export const getInitialTheme = (): Theme => {
   /* Check localStorage for a persisted preference */
   const saved = localStorage.getItem(STORAGE_KEY)
   if (saved === 'light' || saved === 'dark') return saved
@@ -47,7 +47,7 @@ export function getInitialTheme(): Theme {
  * Apply theme to the document root and persist to localStorage.
  * Toggles the `data-theme` attribute that drives CSS custom properties.
  */
-export function applyTheme(theme: Theme): void {
+export const applyTheme = (theme: Theme): void => {
   document.documentElement.setAttribute('data-theme', theme)
   localStorage.setItem(STORAGE_KEY, theme)
 }

@@ -78,27 +78,4 @@
   justify-content: center;
   position: relative;
   z-index: 1;
-  margin-bottom: 28px;
-}
-
-/* Social icons row */
-.social {
-  display: flex;
-  gap: 18px;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-}
-.social a {
-  color: var(--t3);
-  display: flex;
-  transition: color 0.2s;
-}
-.social a:hover {
-  color: var(--sand);
-}
-.social svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
 }

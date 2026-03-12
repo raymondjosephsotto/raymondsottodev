@@ -14,7 +14,7 @@ import Workflow from '../features/workflow/Workflow'
 import Contact from '../features/contact/Contact'
 import Footer from '../components/Footer/Footer'
 
-export default function Home() {
+const Home = () => {
   /* Activate IntersectionObserver for all .reveal elements on this page */
   useScrollReveal()
 
@@ -46,3 +46,5 @@ export default function Home() {
     </>
   )
 }
+
+export default Home

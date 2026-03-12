@@ -14,7 +14,7 @@ const stats = [
   { number: '∞', sup: '', title: 'Always building', desc: 'TypeScript, C#, and side projects pushing well past the browser.' },
 ]
 
-export default function Stats() {
+const Stats = () => {
   return (
     <div className={styles.stats}>
       <div className={styles.grid}>
@@ -34,3 +34,5 @@ export default function Stats() {
     </div>
   )
 }
+
+export default Stats

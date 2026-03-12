@@ -6,7 +6,7 @@
 
 import styles from './About.module.css'
 
-export default function About() {
+const About = () => {
   return (
     <section className="sec" id="about">
       {/* Section label with decorative line */}
@@ -67,3 +67,5 @@ export default function About() {
     </section>
   )
 }
+
+export default About

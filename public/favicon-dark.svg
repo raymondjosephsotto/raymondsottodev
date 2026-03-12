@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+  <defs>
+    <mask id="r-mask-dark">
+      <circle cx="48" cy="48" r="44" fill="white"/>
+      <text
+        x="49" y="71"
+        text-anchor="middle"
+        font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif"
+        font-size="66"
+        font-weight="800"
+        fill="black">r</text>
+    </mask>
+  </defs>
+  <circle cx="48" cy="48" r="44" fill="#c8b99a" mask="url(#r-mask-dark)"/>
+</svg>
