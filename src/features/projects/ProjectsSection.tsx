@@ -14,7 +14,7 @@ import styles from './ProjectsSection.module.css'
 /* Tab options for the project filter */
 type Tab = 'professional' | 'personal'
 
-export default function ProjectsSection() {
+const ProjectsSection = () => {
   /* Active tab state — defaults to professional */
   const [activeTab, setActiveTab] = useState<Tab>('professional')
 
@@ -65,8 +65,10 @@ export default function ProjectsSection() {
   )
 }
 
+export default ProjectsSection
+
 /* ── Featured project card with browser mockup ── */
-function FeaturedCard({ project }: { project: Project }) {
+const FeaturedCard = ({ project }: { project: Project }) => {
   return (
     <div className={styles.feat}>
       <div className={styles.featInner}>
@@ -105,7 +107,7 @@ function FeaturedCard({ project }: { project: Project }) {
 }
 
 /* ── Compact project card ── */
-function CompactCard({ project, delay }: { project: Project; delay: number }) {
+const CompactCard = ({ project, delay }: { project: Project; delay: number }) => {
   return (
     <div className={styles.pcard} style={{ animationDelay: `${delay * 0.08}s` }}>
       <div className={styles.pcardTop}>
@@ -142,7 +144,7 @@ function CompactCard({ project, delay }: { project: Project; delay: number }) {
 }
 
 /* ── Status badge with colored dot ── */
-function StatusBadge({ status }: { status: ProjectStatus }) {
+const StatusBadge = ({ status }: { status: ProjectStatus }) => {
   const label = status === 'live' ? 'Live in production' : 'Work in progress'
   const dotClass = status === 'live' ? styles.dotLive : styles.dotWip
 
@@ -155,7 +157,7 @@ function StatusBadge({ status }: { status: ProjectStatus }) {
 }
 
 /* ── External link icons (site URL, repo URL) ── */
-function ProjectLinks({ project }: { project: Project }) {
+const ProjectLinks = ({ project }: { project: Project }) => {
   return (
     <div className={styles.plinks}>
       {/* Live site link */}
@@ -181,7 +183,7 @@ function ProjectLinks({ project }: { project: Project }) {
 }
 
 /* ── Browser mockup illustration ── */
-function BrowserMockup({ url, isWip, imageUrl }: { url: string; isWip: boolean; imageUrl?: string }) {
+const BrowserMockup = ({ url, isWip, imageUrl }: { url: string; isWip: boolean; imageUrl?: string }) => {
   return (
     <div className={styles.mockup}>
       <div className={styles.browser}>

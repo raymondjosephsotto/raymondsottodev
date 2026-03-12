@@ -12,7 +12,7 @@ import styles from './NavBar.module.css'
 /* Section IDs that the nav links point to */
 const sections = ['projects', 'about', 'workflow', 'contact'] as const
 
-export default function NavBar() {
+const NavBar = () => {
   const location = useLocation()
   const isHome = location.pathname === '/'
 
@@ -42,3 +42,5 @@ export default function NavBar() {
     </div>
   )
 }
+
+export default NavBar

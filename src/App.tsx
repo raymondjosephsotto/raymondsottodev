@@ -11,7 +11,7 @@ import Resume from './pages/Resume'
 import NotFound from './pages/NotFound'
 import ThemeToggle from './components/ThemeToggle/ThemeToggle'
 
-export default function App() {
+const App = () => {
   return (
     <>
       {/* Theme toggle — fixed bottom-right, visible on all pages */}
@@ -33,3 +33,5 @@ export default function App() {
     </>
   )
 }
+
+export default App

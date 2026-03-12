@@ -40,7 +40,7 @@ const steps = [
   },
 ]
 
-export default function Workflow() {
+const Workflow = () => {
   return (
     <section className="sec" id="workflow">
       <p className="sec-label reveal">How I work</p>
@@ -76,3 +76,5 @@ export default function Workflow() {
     </section>
   )
 }
+
+export default Workflow

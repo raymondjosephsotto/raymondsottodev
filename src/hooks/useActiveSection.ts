@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react'
  * Observes sections by their IDs and returns the ID of the currently visible one.
  * Uses a rootMargin that biases toward the top 30–60% of the viewport.
  */
-export function useActiveSection(sectionIds: string[]): string {
+export const useActiveSection = (sectionIds: string[]): string => {
   const [activeId, setActiveId] = useState<string>('')
 
   useEffect(() => {

@@ -1,19 +1,20 @@
-import NavBar from "../components/NavBar/NavBar";
+import { Link } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
+import ResumeSection from "../features/resume/ResumeSection";
 
 const Resume = () => {
     return (
-        <>
-            {/* Navigation */}
-            <NavBar />
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            {/* Back link */}
+            <Link to="/" style={{ margin: '24px var(--px) 0', color: 'var(--sand)', fontSize: '13px', fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                ← Home
+            </Link>
 
-            <div>
-                <h1>Resume Section: WIP</h1>
-            </div>
+            <ResumeSection />
 
             {/* Footer */}
             <Footer />
-        </>
+        </div>
     )
 }
 

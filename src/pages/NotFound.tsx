@@ -5,7 +5,7 @@
 
 import { Link } from 'react-router-dom'
 
-export default function NotFound() {
+const NotFound = () => {
   return (
     <div style={{
       display: 'flex',
@@ -39,3 +39,5 @@ export default function NotFound() {
     </div>
   )
 }
+
+export default NotFound

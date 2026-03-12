@@ -6,7 +6,7 @@
 
 import { useLayoutEffect } from 'react'
 
-export function useScrollReveal(): void {
+export const useScrollReveal = (): void => {
   useLayoutEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {

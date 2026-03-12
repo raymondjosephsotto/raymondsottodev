@@ -4,7 +4,7 @@
 
 import styles from './Footer.module.css'
 
-export default function Footer() {
+const Footer = () => {
   return (
     <footer className={styles.footer}>
       {/* Attribution */}
@@ -14,3 +14,5 @@ export default function Footer() {
     </footer>
   )
 }
+
+export default Footer

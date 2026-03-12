@@ -11,7 +11,7 @@ import { skills } from '../data/skills'
 import NavBar from '../components/NavBar/NavBar'
 import Footer from '../components/Footer/Footer'
 
-export default function ProjectDetail() {
+const ProjectDetail = () => {
   /* Get the slug from the URL params */
   const { slug } = useParams<{ slug: string }>()
 
@@ -103,3 +103,5 @@ export default function ProjectDetail() {
     </>
   )
 }
+
+export default ProjectDetail

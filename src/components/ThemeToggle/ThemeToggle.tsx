@@ -7,7 +7,7 @@
 import { useTheme } from '../../context/ThemeContext'
 import styles from './ThemeToggle.module.css'
 
-export default function ThemeToggle() {
+const ThemeToggle = () => {
   const { toggleTheme } = useTheme()
 
   return (
@@ -46,3 +46,5 @@ export default function ThemeToggle() {
     </button>
   )
 }
+
+export default ThemeToggle
