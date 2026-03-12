@@ -211,6 +211,37 @@ ul {
    SHARED BUTTON STYLES
    ============================================================ */
 
+/* Standalone page shell — used by Resume, ProjectDetail, etc.
+   Flex column ensures footer is always pinned to the bottom. */
+.page-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Back link pill — fixed top-left nav for standalone pages (Resume, ProjectDetail, etc.) */
+.btn-back {
+  position: fixed;
+  top: 24px;
+  left: var(--px);
+  z-index: 100;
+  color: var(--sand);
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: opacity 0.15s;
+  background: var(--bg);
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+}
+.btn-back:hover {
+  opacity: 0.75;
+}
+
 /* Ghost button — outlined, subtle */
 .btn-ghost {
   display: inline-flex;

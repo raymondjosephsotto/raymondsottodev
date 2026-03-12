@@ -1,0 +1,49 @@
+/* ── Page shell: flex column so footer is always at the bottom ──
+   Note: .page-shell in globals.css provides the same pattern for
+   other standalone pages (Resume, future single pages). */
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ── Page wrapper ── */
+.wrapper {
+  flex: 1;
+  padding: clamp(80px, 10vh, 120px) var(--px);
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ── Two-column grid: article (left) + gallery (right) ── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start; /* required for position:sticky on the gallery column */
+}
+
+/* Prevent grid children from overflowing their columns.
+   Without min-width:0, grid items won't shrink below intrinsic content size,
+   which causes Swiper's internal track to blow past the column boundary. */
+.grid > * {
+  min-width: 0;
+}
+
+/* ── Mobile: sticky carousel at top, article scrolls beneath it ── */
+@media (max-width: 900px) {
+  .wrapper {
+    padding-top: 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* Pull gallery (last child) above the article (first child) */
+  .grid > *:last-child {
+    order: -1;
+  }
+}
