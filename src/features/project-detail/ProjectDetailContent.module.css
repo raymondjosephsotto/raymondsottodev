@@ -4,6 +4,11 @@
   .content {
     padding-top: 32px;
   }
+
+  /* No gallery on mobile — needs clearance for the fixed ← Home button */
+  .contentSolo {
+    padding-top: 96px;
+  }
 }
 
 .statusBadge {

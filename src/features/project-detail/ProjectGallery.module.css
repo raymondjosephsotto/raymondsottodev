@@ -43,10 +43,6 @@
 .navBtn:hover {
   background: var(--bg4);
 }
-.navBtn:disabled {
-  opacity: 0.3;
-  cursor: default;
-}
 
 .mainImage {
   width: 100%;
@@ -66,7 +62,6 @@
   border-radius: 6px;
   overflow: hidden;
   opacity: 0.45;
-  transition: opacity 0.2s;
   border: 2px solid transparent;
   transition: opacity 0.2s, border-color 0.2s;
 }

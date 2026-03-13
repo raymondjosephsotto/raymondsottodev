@@ -10,11 +10,12 @@ import styles from './ProjectDetailContent.module.css'
 
 interface Props {
   project: Project
+  solo?: boolean
 }
 
-const ProjectDetailContent = ({ project }: Props) => {
+const ProjectDetailContent = ({ project, solo }: Props) => {
   return (
-    <article className={styles.content}>
+    <article className={`${styles.content}${solo ? ` ${styles.contentSolo}` : ''}`}>
       {/* Back link */}
       <Link to="/#projects" className="btn-back">
         ← Home

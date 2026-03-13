@@ -1,7 +1,6 @@
 /**
  * ProjectGallery.tsx — Swiper thumbs gallery carousel for the project detail page.
  * Renders a main image swiper with looping navigation and a thumbnail strip below.
- * Falls back to placeholder images when no screenshots are provided.
  */
 
 import { useState } from 'react'
@@ -17,23 +16,17 @@ import 'swiper/css/autoplay'
 import styles from './ProjectGallery.module.css'
 
 interface Props {
-  screenshots?: string[]
+  screenshots: string[]
   title: string
 }
 
-/* Shown when a project has no screenshots yet */
-const PLACEHOLDERS = [
-  'https://picsum.photos/seed/gallery-a/1200/750',
-  'https://picsum.photos/seed/gallery-b/1200/750',
-  'https://picsum.photos/seed/gallery-c/1200/750',
-  'https://picsum.photos/seed/gallery-d/1200/750',
-]
+/* Resolve a screenshot src: prepend BASE_URL for relative paths, pass absolute URLs through */
+const resolveSrc = (src: string) =>
+  src.startsWith('http') ? src : `${import.meta.env.BASE_URL}${src}`
 
 const ProjectGallery = ({ screenshots, title }: Props) => {
   const [mainSwiper, setMainSwiper] = useState<SwiperType | null>(null)
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null)
-
-  const images = screenshots?.length ? screenshots : PLACEHOLDERS
 
   return (
     <div className={styles.gallery}>
@@ -49,10 +42,10 @@ const ProjectGallery = ({ screenshots, title }: Props) => {
         }}
         className={styles.mainSwiper}
       >
-        {images.map((src, i) => (
+        {screenshots.map((src, i) => (
           <SwiperSlide key={i}>
             <img
-              src={src}
+              src={resolveSrc(src)}
               alt={`${title} screenshot ${i + 1}`}
               className={styles.mainImage}
             />
@@ -70,10 +63,10 @@ const ProjectGallery = ({ screenshots, title }: Props) => {
         spaceBetween={8}
         className={styles.thumbsSwiper}
       >
-        {images.map((src, i) => (
+        {screenshots.map((src, i) => (
           <SwiperSlide key={i} className={styles.thumbSlide}>
             <img
-              src={src}
+              src={resolveSrc(src)}
               alt={`${title} thumbnail ${i + 1}`}
               className={styles.thumbImage}
             />

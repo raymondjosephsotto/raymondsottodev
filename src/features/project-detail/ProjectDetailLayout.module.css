@@ -24,11 +24,39 @@
   align-items: start; /* required for position:sticky on the gallery column */
 }
 
+/* Single-column override when no gallery is present */
+.gridSingle {
+  grid-template-columns: 1fr;
+  max-width: 720px;
+}
+
 /* Prevent grid children from overflowing their columns.
    Without min-width:0, grid items won't shrink below intrinsic content size,
    which causes Swiper's internal track to blow past the column boundary. */
 .grid > * {
   min-width: 0;
+}
+
+/* ── 404 fallback ── */
+.notFound {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--px);
+}
+.notFoundTitle {
+  color: var(--heading);
+  font-size: 32px;
+  font-weight: 800;
+}
+.notFoundBody {
+  color: var(--t2);
+  margin-top: 12px;
+}
+.notFoundLink {
+  color: var(--sand);
 }
 
 /* ── Mobile: sticky carousel at top, article scrolls beneath it ── */

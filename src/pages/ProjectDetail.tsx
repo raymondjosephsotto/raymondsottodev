@@ -7,6 +7,7 @@
  * Route: /projects/:slug
  */
 
+import { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getProjectBySlug } from '../data/projects'
 import Footer from '../components/Footer/Footer'
@@ -18,16 +19,18 @@ const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>()
   const project = slug ? getProjectBySlug(slug) : undefined
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [slug])
+
   /* 404 fallback */
   if (!project) {
     return (
       <div className={styles.page}>
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: 'var(--px)' }}>
-          <h1 style={{ color: 'var(--heading)', fontSize: '32px', fontWeight: 800 }}>
-            Project not found
-          </h1>
-          <p style={{ color: 'var(--t2)', marginTop: '12px' }}>
-            <Link to="/" style={{ color: 'var(--sand)' }}>← Back to home</Link>
+        <div className={styles.notFound}>
+          <h1 className={styles.notFoundTitle}>Project not found</h1>
+          <p className={styles.notFoundBody}>
+            <Link to="/" className={styles.notFoundLink}>← Back to home</Link>
           </p>
         </div>
         <Footer />
@@ -35,16 +38,20 @@ const ProjectDetail = () => {
     )
   }
 
+  const hasScreenshots = !!project.screenshots?.length
+
   return (
     <div className={styles.page}>
 
       <div className={styles.wrapper}>
-        <div className={styles.grid}>
+        <div className={`${styles.grid} ${!hasScreenshots ? styles.gridSingle : ''}`}>
           {/* Left column — article content */}
-          <ProjectDetailContent project={project} />
+          <ProjectDetailContent project={project} solo={!hasScreenshots} />
 
-          {/* Right column — screenshot carousel */}
-          <ProjectGallery screenshots={project.screenshots} title={project.title} />
+          {/* Right column — screenshot carousel (only when screenshots exist) */}
+          {hasScreenshots && (
+            <ProjectGallery screenshots={project.screenshots!} title={project.title} />
+          )}
         </div>
       </div>
 
