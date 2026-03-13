@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     {/* ThemeProvider manages light/dark state via React Context */}
     <ThemeProvider>
       {/* BrowserRouter enables client-side routing */}
-      <BrowserRouter basename="/raymondsottodev">
+      <BrowserRouter>
         <App />
       </BrowserRouter>
     </ThemeProvider>

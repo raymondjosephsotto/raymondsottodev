@@ -142,27 +142,16 @@ export const projects: Project[] = [
       'Travelog was my first deliberate push into full-stack territory, built to own the entire application layer, not just the front end. The goal was to understand how authentication, file handling, and data persistence actually work at the server level, then build a front end that accounts for all of it.\n\nThe back end is a Node/Express REST API with JWT-based authentication. Users register, receive a signed token, and every protected route validates that token before touching the database. Image uploads are handled on the server using Multer, with files stored and served from the back-end layer. MongoDB manages the data model: user accounts, posts, and image references, structured with Mongoose schemas for type consistency.\n\nThe React front end handles auth state globally, persists the JWT in local storage, and conditionally renders UI based on the user\'s session. Protected routes redirect unauthenticated users without server round-trips. The front end is deployed on Firebase Hosting; the API runs on Heroku. Two environments, one coherent system, and I built both sides.',
   },
   {
-    id: 'fullstack-app',
-    slug: 'fullstack-app',
-    title: 'Full-Stack App — In Progress',
+    id: 'pebble',
+    slug: 'pebble',
+    title: 'Pebble',
     status: 'wip',
     type: 'personal',
     layout: 'featured',
     description:
-      'A full-stack build designed to own the entire application layer, not just the UI. React 19 front-end, Express REST API, MongoDB data layer, and JWT authentication from scratch. The goal is to internalize what back-end engineers deal with and write front-end code that genuinely accounts for it.',
-    skills: ['react', 'typescript', 'nodejs', 'mongodb', 'express'],
+      'A Budgeting app made to simplify money management. A full-stack build designed to own the entire application layer, not just the UI. React 19 front-end, Express REST API, MongoDB data layer, and JWT authentication from scratch. The goal is to internalize what back-end engineers deal with and write front-end code that genuinely accounts for it.',
+    skills: ['react', 'typescript', 'nodejs', 'tanstack-query', 'vite'],
     mockupUrl: 'localhost:5173',
-  },
-  {
-    id: 'project-b',
-    slug: 'project-b',
-    title: 'Project B — In Progress',
-    status: 'wip',
-    type: 'personal',
-    layout: 'card',
-    description:
-      'A focused exploration of real-world application architecture: authentication flows, data modeling, and API design patterns that go beyond tutorial territory. Firebase back-end, JavaScript front-end, REST API integration. Building it because reading about architecture isn\'t the same as having the scars from it.',
-    skills: ['firebase', 'javascript', 'rest-api'],
   },
 ]
 
