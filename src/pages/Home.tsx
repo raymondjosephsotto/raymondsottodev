@@ -5,10 +5,10 @@
  */
 
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import { GitHubStatsWidget } from '@raymondjosephsotto/github-stats-widget'
 import Hero from '../features/hero/Hero'
 import NavBar from '../components/NavBar/NavBar'
 import About from '../features/about/About'
-import { GitHubStatsWidget } from 'github-stats-widget'
 import ProjectsSection from '../features/projects/ProjectsSection'
 import Workflow from '../features/workflow/Workflow'
 import Contact from '../features/contact/Contact'
