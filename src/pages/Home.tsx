@@ -8,7 +8,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 import Hero from '../features/hero/Hero'
 import NavBar from '../components/NavBar/NavBar'
 import About from '../features/about/About'
-import Stats from '../features/about/Stats'
+import { GitHubStatsWidget } from 'github-stats-widget'
 import ProjectsSection from '../features/projects/ProjectsSection'
 import Workflow from '../features/workflow/Workflow'
 import Contact from '../features/contact/Contact'
@@ -32,8 +32,8 @@ const Home = () => {
       {/* About section — three value pillars */}
       <About />
 
-      {/* Stats badges — career metrics */}
-      <Stats />
+      {/* GitHub Stats */}
+      <div className='sec'><GitHubStatsWidget  apiUrl={import.meta.env.VITE_GITHUB_STATS_API_URL} /></div>
 
       {/* Workflow section — sprint-to-deploy timeline */}
       <Workflow />
