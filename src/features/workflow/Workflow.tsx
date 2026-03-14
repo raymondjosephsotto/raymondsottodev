@@ -42,7 +42,7 @@ const steps = [
 
 const Workflow = () => {
   return (
-    <section className="sec" id="workflow">
+    <section className="sec sec--last" id="workflow">
       <p className="sec-label reveal">How I work</p>
 
       {/* Section heading */}
