@@ -35,6 +35,8 @@ jobs:
       # 4. Build the Vite app
       - name: Build
         run: npm run build
+        env:
+          VITE_GITHUB_STATS_API_URL: ${{ secrets.VITE_GITHUB_STATS_API_URL }}
 
       # 5. Release (semantic-release)
       - name: Release
