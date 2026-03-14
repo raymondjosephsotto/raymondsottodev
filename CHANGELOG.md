@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/raymondjosephsotto/raymondsottodev/compare/v1.0.0...v1.0.1) (2026-03-14)
+
+
+### Bug Fixes
+
+* add environment variable for GitHub Stats API URL in build step ([6f9f95b](https://github.com/raymondjosephsotto/raymondsottodev/commit/6f9f95bf4a04d845f5b0f2101220ecd7fcd3860a))
+
 # 1.0.0 (2026-03-14)
 
 
