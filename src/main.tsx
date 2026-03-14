@@ -10,7 +10,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from './context/ThemeContext'
 import App from './App'
 import './styles/globals.css'
-import 'github-stats-widget/dist/github-stats-widget.css'
+import "@raymondjosephsotto/github-stats-widget/github-stats-widget.css";
 
 /* Mount the React app into the #root element */
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
