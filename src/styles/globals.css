@@ -178,8 +178,8 @@ ul {
   border-top: 1px solid var(--border2);
 }
 
-.sec:nth-last-of-type() {
-  padding-bottom: var(--px);
+.sec--last {
+  padding-bottom:  var(--spy);
 }
 
 /* Projects section: tighter vertical padding on mobile */
