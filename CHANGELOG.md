@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/raymondjosephsotto/raymondsottodev/compare/v1.0.1...v1.1.0) (2026-03-16)
+
+
+### Features
+
+* **projects:** add Components tab and update project detail content ([ab77081](https://github.com/raymondjosephsotto/raymondsottodev/commit/ab77081c67d7f87a8f98a136ae5dff750a0058cd))
+
 ## [1.0.1](https://github.com/raymondjosephsotto/raymondsottodev/compare/v1.0.0...v1.0.1) (2026-03-14)
 
 
