@@ -174,7 +174,7 @@ ul {
    SECTION BASE — shared padding and divider
    ============================================================ */
 .sec {
-  padding: var(--spy) var(--px) 0;
+  padding: var(--spy) var(--px) var(--px);
   border-top: 1px solid var(--border2);
 }
 
@@ -187,6 +187,9 @@ ul {
   #projects {
     padding-top: 3.5rem;
     scroll-margin-top: 2rem;
+  }
+  .sec {
+    padding: 3rem var(--px);
   }
 }
 

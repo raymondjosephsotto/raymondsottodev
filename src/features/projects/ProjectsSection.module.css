@@ -16,7 +16,8 @@
 
 /* Shared transition on both heading lines */
 .line1,
-.line2 {
+.line2,
+.line3 {
   transition: color 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -43,7 +44,7 @@
 }
 
 .tab {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
   font-size: 12px;
   font-weight: 500;
   color: var(--t2);
@@ -52,7 +53,9 @@
   padding: 7px 20px;
   border-radius: 100px;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 /* Active tab gets elevated background */
@@ -61,18 +64,16 @@
   color: var(--text);
 }
 
-/* Tab panels — hidden by default */
-.panel {
-  display: none;
-}
-.panelShow {
-  display: block;
-}
-
 /* ── Card mount animation ── */
 @keyframes cardIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ── Featured project card — full-width with mockup ── */
@@ -118,18 +119,26 @@
 
 /* Ambient glow under the browser mockup */
 .mockup::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -20%;
   left: 50%;
   transform: translateX(-50%);
   width: 70%;
   height: 70%;
-  background: radial-gradient(ellipse, rgba(200, 185, 154, 0.07), transparent 70%);
+  background: radial-gradient(
+    ellipse,
+    rgba(200, 185, 154, 0.07),
+    transparent 70%
+  );
   pointer-events: none;
 }
 :global([data-theme="light"]) .mockup::before {
-  background: radial-gradient(ellipse, rgba(193, 95, 60, 0.08), transparent 70%);
+  background: radial-gradient(
+    ellipse,
+    rgba(193, 95, 60, 0.08),
+    transparent 70%
+  );
 }
 
 /* Browser chrome frame */
@@ -158,9 +167,27 @@
   display: flex;
   gap: 5px;
 }
-.bdots span:nth-child(1) { width: 6px; height: 6px; border-radius: 50%; background: #ff5f56; display: block; }
-.bdots span:nth-child(2) { width: 6px; height: 6px; border-radius: 50%; background: #ffbd2e; display: block; }
-.bdots span:nth-child(3) { width: 6px; height: 6px; border-radius: 50%; background: #27c93f; display: block; }
+.bdots span:nth-child(1) {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff5f56;
+  display: block;
+}
+.bdots span:nth-child(2) {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffbd2e;
+  display: block;
+}
+.bdots span:nth-child(3) {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #27c93f;
+  display: block;
+}
 
 /* URL bar placeholder */
 .burl {
@@ -207,7 +234,7 @@
 /* Light mode: terracotta tint for mockup cards */
 :global([data-theme="light"]) .ucard {
   background: rgba(193, 95, 60, 0.06);
-  border-color: rgba(193, 95, 60, 0.10);
+  border-color: rgba(193, 95, 60, 0.1);
 }
 
 /* ── Project body (text side of featured card) ── */
@@ -327,10 +354,6 @@
   object-fit: cover;
   object-position: top;
   display: block;
-  transition: transform 0.4s var(--ease);
-}
-.pcard:hover .pcardImg img {
-  transform: scale(1.03);
 }
 
 /* Compact card */
@@ -342,7 +365,9 @@
   display: flex;
   flex-direction: column;
   gap: 9px;
-  transition: border-color 0.25s, background 0.25s;
+  transition:
+    border-color 0.25s,
+    background 0.25s;
   animation: cardIn 0.4s var(--ease) both;
 }
 .pcard:hover {
@@ -409,4 +434,18 @@
 }
 .detailLink:hover {
   opacity: 1;
+}
+
+/* External link icon on component cards */
+.ccardLink {
+  color: var(--t3);
+  display: flex;
+  transition: color 0.2s;
+}
+.ccardLink:hover {
+  color: var(--sand);
+}
+.ccardLink svg {
+  width: 16px;
+  height: 16px;
 }

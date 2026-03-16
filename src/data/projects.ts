@@ -37,7 +37,7 @@ export const projects: Project[] = [
     skills: ['wordpress', 'javascript', 'scss', 'gsap'],
     siteUrl: 'https://mindhues.com',
     mockupUrl: 'mindhues.com',
-    imageUrl: 'images/mindhues.png',
+    imageUrl: 'images/mindhues/mindhues.png',
     screenshots: [
       'images/mindhues/mindhues-6.png',
       'images/mindhues/mindhues-7.png',
@@ -61,7 +61,7 @@ export const projects: Project[] = [
       'SaaS platform allowing designers and creators to sell customizable products online. Led the Corjl 2.0 redesign at Blennd, from strategy and UX to development for a creative entrepreneur audience.',
     skills: ['wordpress', 'javascript', 'scss'],
     siteUrl: 'https://www.corjl.com/',
-    imageUrl: 'images/corjl.png',
+    imageUrl: 'images/corjl/corjl.png',
     screenshots: [
       'images/corjl/corjl-1.png',
       'images/corjl/corjl-2.png',
@@ -82,7 +82,7 @@ export const projects: Project[] = [
       'Web redesign for a leading CaaS/CCaaS provider. Audited 1,000+ pages to eliminate orphan content, restructured information architecture, and built a conversion-focused site with clear service navigation.',
     skills: ['wordpress', 'javascript', 'scss'],
     siteUrl: 'https://inflowcx.com',
-    imageUrl: 'images/inflowcx.png',
+    imageUrl: 'images/inflowcx/inflowcx.png',
     screenshots: [
       'images/inflowcx/inflowcx-1.png',
       'images/inflowcx/inflowcx-2.png',
@@ -109,6 +109,28 @@ export const projects: Project[] = [
   },
 
   /* ── Personal projects ── */
+  {
+    id: 'pebble',
+    slug: 'pebble',
+    title: 'Pebble.',
+    status: 'wip',
+    type: 'personal',
+    layout: 'featured',
+    description:
+      'A mobile-first budgeting web app built in collaboration with a backend engineer. The frontend covers a guided onboarding flow, budget split dashboard, transaction management, and JSON Web Token (JWT) auth integration. Server state handled with TanStack Query; styled with CSS Modules over a hand-crafted design system.',
+    skills: ['react', 'typescript', 'vite', 'tanstack-query', 'rest-api'],
+    siteUrl: 'https://pebble-frontend.onrender.com/',
+    imageUrl: 'images/pebble/pebble.png',
+    screenshots: [
+      'images/pebble/pebble-1.png',
+      'images/pebble/pebble-2.png',
+      'images/pebble/pebble-3.png',
+      'images/pebble/pebble-4.png',
+      'images/pebble/pebble-5.png',
+    ],
+    detailContent:
+      'Most budgeting tools are built for people who already know how to budget. Pebble is built for everyone else — the person who gets paid, watches their account drain, and has no idea where it went. The target user isn\'t irresponsible; they\'re just overwhelmed. Pebble\'s entire product direction is shaped by that reality: simplicity is the feature, not a tradeoff.\n\nThe product voice reflects that philosophy. Pebble speaks like a knowledgeable, encouraging friend — never a stern financial advisor. Every line of copy celebrates progress, references the user\'s actual goals by name, and frames debt payoff as forward momentum rather than deficit. The pebble metaphor runs through the whole product: drop a small, consistent habit into your finances, and watch the ripple grow. No jargon. No guilt. No data overload.\n\nThe core model is simple: every dollar of income gets split across three buckets — Needs, Wants, and Savings — using a starting split suggested by the user\'s own goals. A guided onboarding flow collects those goals (emergency fund, vacation, investing, debt payoff, or just exploring), normalizes income across any pay frequency, and recommends a budget split to start from. From there, the dashboard keeps goals visible and progress motivating with goal cards that use encouraging, specific language — "Halfway there. Your emergency fund is growing." — instead of raw numbers that can feel discouraging.\n\nBuilt in close collaboration with a backend engineer handling the Rust/Axum API and PostgreSQL data layer. The frontend covers the complete component architecture, multi-step onboarding flow, budget split dashboard, transaction management UI, and JSON Web Token (JWT) auth integration via Axios interceptors. Server state is managed with TanStack Query — no Redux, no global store, just declarative data fetching with caching and background sync. Styling is CSS Modules over a hand-crafted design system with a full set of design tokens, typography scale, and motion guidelines — built mobile-first at 375px and scaled up.',
+  },
   {
     id: 'event-explorer',
     slug: 'event-explorer',
@@ -140,18 +162,6 @@ export const projects: Project[] = [
     imageUrl: 'images/travelog.png',
     detailContent:
       'Travelog was my first deliberate push into full-stack territory, built to own the entire application layer, not just the front end. The goal was to understand how authentication, file handling, and data persistence actually work at the server level, then build a front end that accounts for all of it.\n\nThe back end is a Node/Express REST API with JWT-based authentication. Users register, receive a signed token, and every protected route validates that token before touching the database. Image uploads are handled on the server using Multer, with files stored and served from the back-end layer. MongoDB manages the data model: user accounts, posts, and image references, structured with Mongoose schemas for type consistency.\n\nThe React front end handles auth state globally, persists the JWT in local storage, and conditionally renders UI based on the user\'s session. Protected routes redirect unauthenticated users without server round-trips. The front end is deployed on Firebase Hosting; the API runs on Heroku. Two environments, one coherent system, and I built both sides.',
-  },
-  {
-    id: 'pebble',
-    slug: 'pebble',
-    title: 'Pebble',
-    status: 'wip',
-    type: 'personal',
-    layout: 'featured',
-    description:
-      'A Budgeting app made to simplify money management. A full-stack build designed to own the entire application layer, not just the UI. React 19 front-end, Express REST API, MongoDB data layer, and JWT authentication from scratch. The goal is to internalize what back-end engineers deal with and write front-end code that genuinely accounts for it.',
-    skills: ['react', 'typescript', 'nodejs', 'tanstack-query', 'vite'],
-    mockupUrl: 'localhost:5173',
   },
 ]
 
