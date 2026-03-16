@@ -13,35 +13,7 @@
   border-radius: 10px;
   overflow: hidden;
   background: var(--bg3);
-}
-
-/* ── Custom nav controls — below thumbnail strip, flush right ── */
-.navControls {
-  display: flex;
-  justify-content: flex-end;
-  gap: 6px;
-  margin-top: 10px;
-}
-
-.navBtn {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: var(--bg3);
-  backdrop-filter: blur(6px);
-  color: var(--sand);
-  font-size: 15px;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.2s, opacity 0.2s;
-  padding: 0;
-}
-.navBtn:hover {
-  background: var(--bg4);
+  margin-bottom: 8px;
 }
 
 .mainImage {
@@ -90,7 +62,6 @@
 
   .mainSwiper {
     border-radius: 0;
-    margin-bottom: 8px;
   }
 
   .mainImage {

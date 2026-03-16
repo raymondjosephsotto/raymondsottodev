@@ -100,3 +100,13 @@ export interface SiteLink {
   label: string
   href: string
 }
+
+/* A single component showcase entry */
+export interface ComponentItem {
+  id: string
+  title: string
+  description: string
+  skills: SkillId[]
+  url?: string       /* link to view the component — live site or gh-pages, optional */
+  imageUrl?: string  /* thumbnail preview — optional */
+}

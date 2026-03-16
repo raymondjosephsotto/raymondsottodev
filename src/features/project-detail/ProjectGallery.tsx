@@ -25,7 +25,6 @@ const resolveSrc = (src: string) =>
   src.startsWith('http') ? src : `${import.meta.env.BASE_URL}${src}`
 
 const ProjectGallery = ({ screenshots, title }: Props) => {
-  const [mainSwiper, setMainSwiper] = useState<SwiperType | null>(null)
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null)
 
   return (
@@ -33,7 +32,6 @@ const ProjectGallery = ({ screenshots, title }: Props) => {
       {/* ── Main swiper ── */}
       <Swiper
         modules={[Thumbs, Autoplay]}
-        onSwiper={setMainSwiper}
         loop
         speed={1200}
         autoplay={{ delay: 7000, disableOnInteraction: false, pauseOnMouseEnter: true }}
@@ -73,12 +71,6 @@ const ProjectGallery = ({ screenshots, title }: Props) => {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      {/* ── Nav buttons sit below thumbs, flush right ── */}
-      <div className={styles.navControls}>
-        <button className={styles.navBtn} aria-label="Previous" onClick={() => mainSwiper?.slidePrev()}>←</button>
-        <button className={styles.navBtn} aria-label="Next" onClick={() => mainSwiper?.slideNext()}>→</button>
-      </div>
     </div>
   )
 }

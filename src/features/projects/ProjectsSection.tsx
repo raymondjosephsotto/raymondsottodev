@@ -7,23 +7,36 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getProjectsByType } from '../../data/projects'
-import type { Project, ProjectStatus } from '../../data/types'
+import { getAllComponents } from '../../data/components'
+import type { Project, ProjectStatus, ComponentItem } from '../../data/types'
+
 import { skills } from '../../data/skills'
 import styles from './ProjectsSection.module.css'
 
 /* Tab options for the project filter */
-type Tab = 'professional' | 'personal'
+type Tab = 'professional' | 'personal' | 'components'
 
 const ProjectsSection = () => {
   /* Active tab state — defaults to professional */
   const [activeTab, setActiveTab] = useState<Tab>('professional')
 
   /* Get projects for the active tab from the data layer */
-  const projectsToShow = getProjectsByType(activeTab)
+  const projectsToShow = getProjectsByType(activeTab === 'components' ? 'professional' : activeTab)
 
   /* Separate featured projects from compact cards */
   const featured = projectsToShow.filter((p) => p.layout === 'featured')
   const cards = projectsToShow.filter((p) => p.layout === 'card')
+
+  /* Get all components for the components tab */
+  const componentItems = getAllComponents()
+
+  /* Only render a tab if it has content */
+  const visibleTabs: Tab[] = [
+    ...(getProjectsByType('professional').length > 0 ? (['professional'] as Tab[]) : []),
+    ...(getProjectsByType('personal').length > 0 ? (['personal'] as Tab[]) : []),
+    ...(componentItems.length > 0 ? (['components'] as Tab[]) : []),
+  ]
+
 
   return (
     <section className="sec" id="projects">
@@ -32,12 +45,13 @@ const ProjectsSection = () => {
       {/* Section heading — active line swaps based on tab */}
       <h2 className={`${styles.head} reveal`}>
         <span className={`${styles.line1} ${activeTab === 'professional' ? styles.lineActive : styles.lineDim}`}>Work I've built.</span><br />
-        <span className={`${styles.line2} ${activeTab === 'personal' ? styles.lineActive : styles.lineDim}`}>Things I'm still building.</span>
+        <span className={`${styles.line2} ${activeTab === 'personal' ? styles.lineActive : styles.lineDim}`}>Things I'm still building.</span><br />
+        <span className={`${styles.line3} ${activeTab === 'components' ? styles.lineActive : styles.lineDim}`}>Pieces I've crafted.</span>
       </h2>
 
-      {/* Tab switcher — Professional / Personal */}
+      {/* Tab switcher — Professional / Personal / Components */}
       <div className={`${styles.tabs} reveal`}>
-        {(['professional', 'personal'] as Tab[]).map((tab) => (
+        {visibleTabs.map((tab) => (
           <button
             key={tab}
             className={`${styles.tab} ${activeTab === tab ? styles.tabActive : ''}`}
@@ -48,16 +62,27 @@ const ProjectsSection = () => {
         ))}
       </div>
 
-      {/* Featured project cards — with browser mockup */}
-      {featured.map((project) => (
-        <FeaturedCard key={project.id} project={project} />
-      ))}
+      {/* Projects tabs — hidden when components tab is active */}
+      {activeTab !== 'components' && (
+        <>
+          {featured.map((project) => (
+            <FeaturedCard key={project.id} project={project} />
+          ))}
+          {cards.length > 0 && (
+            <div className={styles.plist}>
+              {cards.map((project, i) => (
+                <CompactCard key={project.id} project={project} delay={i} />
+              ))}
+            </div>
+          )}
+        </>
+      )}
 
-      {/* Compact project card grid */}
-      {cards.length > 0 && (
+      {/* Components tab */}
+      {activeTab === 'components' && (
         <div className={styles.plist}>
-          {cards.map((project, i) => (
-            <CompactCard key={project.id} project={project} delay={i} />
+          {componentItems.map((component, i) => (
+            <ComponentCard key={component.id} component={component} delay={i} />
           ))}
         </div>
       )}
@@ -219,3 +244,56 @@ const BrowserMockup = ({ url, isWip, imageUrl }: { url: string; isWip: boolean; 
     </div>
   )
 }
+
+/* ── Component showcase card ── */
+const ComponentCard = ({ component, delay }: { component: ComponentItem; delay: number }) => {
+  return (
+    <div className={styles.pcard} style={{ animationDelay: `${delay * 0.08}s` }}>
+      {/* Thumbnail preview — only rendered if imageUrl is provided */}
+      {component.imageUrl && (
+        <div className={styles.pcardImg}>
+          <img
+            src={`${import.meta.env.BASE_URL ?? '/'}${component.imageUrl}`}
+            alt={component.title}
+          />
+        </div>
+      )}
+
+      <div className={styles.pcardTop}>
+        {/* Component icon */}
+        <div className={styles.pcardIcon}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="16 18 22 12 16 6" />
+            <polyline points="8 6 2 12 8 18" />
+          </svg>
+        </div>
+
+        {/* External link — only rendered if url is provided */}
+        {component.url && (
+          <a href={component.url} target="_blank" rel="noopener noreferrer" className={styles.ccardLink} aria-label="View component">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </a>
+        )}
+      </div>
+
+      {/* Component name */}
+      <div className={styles.pcardName}>{component.title}</div>
+
+      {/* Component description */}
+      <div className={styles.pcardDesc}>{component.description}</div>
+
+      {/* Skill tags */}
+      <div className={styles.ptags}>
+        {component.skills.map((skillId) => {
+          const skill = skills.find((s) => s.id === skillId)
+          return <span key={skillId} className="tag">{skill?.label ?? skillId}</span>
+        })}
+      </div>
+    </div>
+  )
+}
+
