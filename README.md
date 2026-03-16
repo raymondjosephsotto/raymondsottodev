@@ -183,17 +183,6 @@ Then add `'my-skill'` to the `SkillId` union in [`src/data/types.ts`](src/data/t
 
 ---
 
-## Roadmap
-
-Planned features, architecturally ready to add:
-
-- [ ] **GitHub stats component** — SWR + GitHub public API (`/users/raymondjosephsotto`)
-- [ ] **Skill pill ↔ Project cross-filtering** — `getProjectsBySkill()` helper already in [projects.ts](src/data/projects.ts)
-- [ ] **Project detail page content** — add `detailContent` field to any project in `projects.ts`
-- [ ] **Auto light/dark by time** — already implemented in `utils/theme.ts`, currently sits behind localStorage/system priority
-
----
-
 Built by [Raymond Sotto](https://raymondsotto.dev)
 
 ```
