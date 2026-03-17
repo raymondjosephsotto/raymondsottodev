@@ -1,0 +1,19 @@
+/* Separates the section from the grid above */
+.section {
+  border-top: 1px solid var(--border);
+  padding-top: clamp(40px, 6vw, 64px);
+  margin-top: clamp(40px, 6vw, 64px);
+}
+
+/* Card grid — matches .plist pattern from ProjectsSection */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+@media (min-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
