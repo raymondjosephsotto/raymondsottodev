@@ -10,9 +10,11 @@
 import { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getProjectBySlug } from '../data/projects'
+import { getComponentsByProjectId } from '../data/components'
 import Footer from '../components/Footer/Footer'
 import ProjectDetailContent from '../features/project-detail/ProjectDetailContent'
 import ProjectGallery from '../features/project-detail/ProjectGallery'
+import RelatedComponents from '../features/project-detail/RelatedComponents'
 import styles from '../features/project-detail/ProjectDetailLayout.module.css'
 
 const ProjectDetail = () => {
@@ -22,6 +24,8 @@ const ProjectDetail = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [slug])
+
+  const relatedComponents = project ? getComponentsByProjectId(project.id) : []
 
   /* 404 fallback */
   if (!project) {
@@ -45,15 +49,18 @@ const ProjectDetail = () => {
 
       <div className={styles.wrapper}>
         <div className={`${styles.grid} ${!hasScreenshots ? styles.gridSingle : ''}`}>
-          {/* Left column — article content */}
           <ProjectDetailContent project={project} solo={!hasScreenshots} />
-
-          {/* Right column — screenshot carousel (only when screenshots exist) */}
           {hasScreenshots && (
             <ProjectGallery screenshots={project.screenshots!} title={project.title} />
           )}
         </div>
+
+        {/* Related components — only rendered when the project has linked components */}
+        {relatedComponents.length > 0 && (
+          <RelatedComponents components={relatedComponents} />
+        )}
       </div>
+
 
       <Footer />
     </div>

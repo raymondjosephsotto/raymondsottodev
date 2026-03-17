@@ -56,9 +56,20 @@ export type ProjectType = 'professional' | 'personal'
 /* Whether the project should render as a featured card or a compact card */
 export type ProjectLayout = 'featured' | 'card'
 
+/* Union of all valid project identifiers — used for type-safe cross-referencing */
+export type ProjectId =
+  | 'penn-foster'
+  | 'mindhues'
+  | 'corjl'
+  | 'inflowcx'
+  | 'amicus'
+  | 'pebble'
+  | 'event-explorer'
+  | 'travelog'
+
 /* Full project definition — slug is used for /projects/:slug routing */
 export interface Project {
-  id: string
+  id: ProjectId
   slug: string
   title: string
   status: ProjectStatus
@@ -107,6 +118,7 @@ export interface ComponentItem {
   title: string
   description: string
   skills: SkillId[]
+  projectId?: ProjectId /* id of the project this component belongs to — optional (standalone components omit this) */
   url?: string       /* link to view the component — live site or gh-pages, optional */
   imageUrl?: string  /* thumbnail preview — optional */
 }

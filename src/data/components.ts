@@ -3,7 +3,7 @@
  * Add a new entry here to have it appear in the Components tab.
  */
 
-import type { ComponentItem } from './types'
+import type { ComponentItem, ProjectId } from './types'
 
 /* Master list of all component showcase entries */
 export const components: ComponentItem[] = [
@@ -20,6 +20,7 @@ export const components: ComponentItem[] = [
         title: 'Tuition Calculator',
         description: "Built for Penn Foster's student-facing platform. Students select a program of interest and project their total cost under monthly or pay-in-full plans — including potential savings. Backed by a custom range input that required precise logic to keep the UI value, calculated totals, and payment breakdowns in sync.",
         skills: ['javascript', 'scss', 'html'],
+        projectId: 'penn-foster', /* linked to the Penn Foster Web Platform project */
         url: 'https://www.pennfoster.edu/tuition-calculator',
         imageUrl: 'images/component-showcase/pf-tuition-calculator.png',
     },
@@ -28,6 +29,7 @@ export const components: ComponentItem[] = [
         title: 'Video Carousel',
         description: "Built for Penn Foster's high school diploma page, showcasing real graduate stories via embedded YouTube Shorts. Features left/right swipe navigation modeled after the gesture-driven interactions common in mobile social media — bringing a familiar, engaging UX pattern to a web context.",
         skills: ['javascript', 'scss', 'html'],
+        projectId: 'penn-foster', /* linked to the Penn Foster Web Platform project */
         url: 'https://www.pennfoster.edu/high-school/diploma',
         imageUrl: 'images/component-showcase/pf-video-carousel.png',
     },
@@ -36,3 +38,7 @@ export const components: ComponentItem[] = [
 
 /* Helper: get all components (used by the Components tab) */
 export const getAllComponents = (): ComponentItem[] => components
+
+/* Helper: get components that belong to a specific project (used by ProjectDetail) */
+export const getComponentsByProjectId = (projectId: ProjectId): ComponentItem[] =>
+  components.filter((c) => c.projectId === projectId)
