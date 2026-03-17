@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/raymondjosephsotto/raymondsottodev/compare/v1.1.0...v1.2.0) (2026-03-17)
+
+
+### Features
+
+* **projects:** add related components to project detail page ([b64cf35](https://github.com/raymondjosephsotto/raymondsottodev/commit/b64cf35eadc0809e1e444d258836e40e8367f8fa))
+
 # [1.1.0](https://github.com/raymondjosephsotto/raymondsottodev/compare/v1.0.1...v1.1.0) (2026-03-16)
 
 
